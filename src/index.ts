@@ -9,7 +9,8 @@ import { config as dotenv } from 'dotenv';
 
 import UserRoutes from './api/routes/user/UserRoute';
 import AuthRoutes from './api/routes/auth/AuthRoute';
-import TodoRoutes from './api/routes/Todos/TodoRoutes';
+import TodoRoutes from './api/routes/todos/TodoRoutes';
+import CategoryRoutes from './api/routes/category/CategoryRoute';
 
 class App {
   public APP: Application;
@@ -33,6 +34,7 @@ class App {
     this.APP.use('/users', UserRoutes);
     this.APP.use('/auth', AuthRoutes);
     this.APP.use('/todos', TodoRoutes);
+    this.APP.use('/category', CategoryRoutes);
   }
 }
 
