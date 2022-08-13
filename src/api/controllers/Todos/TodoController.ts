@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import IController from '../Interface';
-import TodoService from '../../services/todos/TodoService';
+import TodoService from '../../services/Todos/TodoService';
 
 class Todo implements IController {
   index = async (req: Request, res: Response): Promise<Response> => {

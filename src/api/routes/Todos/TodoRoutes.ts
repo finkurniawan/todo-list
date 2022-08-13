@@ -1,7 +1,7 @@
-import Todo from '../../controllers/todos/TodoController';
+import Todo from '../../controllers/Todos/TodoController';
 import BaseRoutes from '../BaseRouter';
 import auth from '../../middlewares/auth/AuthMiddleware';
-import validate from '../../validations/todos/TodoValidator';
+import validate from '../../validations/Todos/TodoValidator';
 
 class TodoRoutes extends BaseRoutes {
   public routes(): void {
