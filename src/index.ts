@@ -44,7 +44,7 @@ class App {
   }
 }
 
-const port: number = process.env.PORT || 8000;
+const port = process.env.PORT || 8000;
 const { APP } = new App();
 APP.listen(port, () => {
   console.log(`Running At : http://localhost:${port}`);
