@@ -15,6 +15,7 @@
     "tsc": "rm -rf build/ && tsc",
     "ts": "rm -rf build/ && tsc -w",
     "dev": "nodemon ./build/src/index.js",
+    "start": "rm -rf build/ && tsc && node ./build/src/index.js",
     "test": "jest"
   },
   "devDependencies": {

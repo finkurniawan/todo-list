@@ -7,12 +7,23 @@ class AuthController {
   register = async (req: Request, res: Response): Promise<Response> => {
     const { username, password } = req.body;
     const hashedPassword: string = await Authentication.passwordHash(password);
+
     const createdUser = await db.user.create({
       username,
       password: hashedPassword,
     });
+    if (!createdUser)
+      return res.status(400).json({
+        status: false,
+        data: {},
+        message: 'User not created',
+      });
 
-    return res.send(createdUser);
+    return res.status(201).json({
+      status: true,
+      data: {},
+      message: 'Register successfully',
+    });
   };
 
   login = async (req: Request, res: Response): Promise<Response> => {
@@ -22,10 +33,25 @@ class AuthController {
       where: { username },
     });
 
+    if (!user)
+      res.status(400).json({
+        status: false,
+        data: {},
+        message: 'User not found',
+        errors: [],
+      });
+
     const compare = await Authentication.passwordCompare(
       password,
       user.password
     );
+
+    if (!compare)
+      res.status(400).json({
+        status: false,
+        data: {},
+        message: "Password doesn't match",
+      });
 
     if (compare) {
       const token = Authentication.generateToken(
@@ -33,8 +59,13 @@ class AuthController {
         username,
         user.password
       );
-      return res.send({
-        token,
+
+      return res.status(200).json({
+        status: true,
+        data: {
+          token,
+        },
+        message: 'Login Successfully',
       });
     }
 
