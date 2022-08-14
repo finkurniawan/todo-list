@@ -1,16 +1,15 @@
 // import 'module-alias/register';
 import express, { Application, Request, Response } from 'express';
 import bodyParser from 'body-parser';
-import morgan from 'morgan';
+// import morgan from 'morgan';
 import compression from 'compression';
 import helmet from 'helmet';
 import cors from 'cors';
 import { config as dotenv } from 'dotenv';
 
-import UserRoutes from './api/routes/user/UserRoute';
-import AuthRoutes from './api/routes/auth/AuthRoute';
-import TodoRoutes from './api/routes/todos/TodoRoutes';
-import CategoryRoutes from './api/routes/category/CategoryRoute';
+import AuthRoutes from './api/v1/routes/auth/AuthRoute';
+import TodoRoutes from './api/v1/routes/todos/TodoRoutes';
+import CategoryRoutes from './api/v1/routes/category/CategoryRoute';
 
 class App {
   public APP: Application;
@@ -24,23 +23,30 @@ class App {
 
   protected plugins(): void {
     this.APP.use(bodyParser.json());
-    this.APP.use(morgan('dev'));
+    // this.APP.use(morgan('dev'));
     this.APP.use(compression());
     this.APP.use(helmet());
     this.APP.use(cors());
   }
 
   protected routes(): void {
-    this.APP.use('/users', UserRoutes);
-    this.APP.use('/auth', AuthRoutes);
-    this.APP.use('/todos', TodoRoutes);
-    this.APP.use('/category', CategoryRoutes);
+    this.APP.use('/api/v1/accounts', AuthRoutes);
+    this.APP.use('/api/v1/todos', TodoRoutes);
+    this.APP.use('/api/v1/categories', CategoryRoutes);
+    this.APP.use('*', (req: Request, res: Response) =>
+      res.status(404).json({
+        status: false,
+        data: null,
+        message: 'Page not found',
+        errors: [],
+      })
+    );
   }
 }
 
-const port: number = 8000;
-const APP = new App().APP;
+const port = process.env.PORT || 8000;
+const { APP } = new App();
 APP.listen(port, () => {
-  console.log('Running At : http://localhost:' + port);
+  console.log(`Running At : http://localhost:${port}`);
   console.log(process.env.DB_HOST);
 });

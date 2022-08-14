@@ -2,15 +2,20 @@ import { Request, Response, NextFunction } from 'express';
 import { check, validationResult } from 'express-validator';
 
 const validate = [
-  check('username').isString(),
-  check('password').isLength({ min: 8 }),
+  check('title').isString(),
+  check('description').isString(),
   (req: Request, res: Response, next: NextFunction) => {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      return res.status(422).send({ errors: errors.array() });
+      return res.status(422).json({
+        status: false,
+        data: {},
+        message: 'Validation Error',
+        errors: errors.array(),
+      });
     }
-    next();
+    return next();
   },
 ];
 
