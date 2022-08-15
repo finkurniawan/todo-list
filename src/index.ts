@@ -1,7 +1,6 @@
-// import 'module-alias/register';
 import express, { Application, Request, Response } from 'express';
 import bodyParser from 'body-parser';
-// import morgan from 'morgan';
+import morgan from 'morgan';
 import compression from 'compression';
 import helmet from 'helmet';
 import cors from 'cors';
@@ -23,7 +22,7 @@ class App {
 
   protected plugins(): void {
     this.APP.use(bodyParser.json());
-    // this.APP.use(morgan('dev'));
+    this.APP.use(morgan('dev'));
     this.APP.use(compression());
     this.APP.use(helmet());
     this.APP.use(cors());
@@ -46,7 +45,8 @@ class App {
 
 const port = process.env.PORT || 8000;
 const { APP } = new App();
+
 APP.listen(port, () => {
   console.log(`Running At : http://localhost:${port}`);
-  console.log(process.env.DB_HOST);
+  console.log(process.env.DB_HOST, process.env.DB_HOST_DATABASE);
 });

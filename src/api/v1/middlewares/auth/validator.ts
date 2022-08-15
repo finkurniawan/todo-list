@@ -7,15 +7,15 @@ const validate = [
   (req: Request, res: Response, next: NextFunction) => {
     const errors = validationResult(req);
 
-    if (!errors.isEmpty()) {
-      return res.status(422).json({
+    if (!errors.isEmpty())
+      res.status(422).json({
         status: false,
         data: null,
         message: 'Validation Error',
         errors: errors.array(),
       });
-    }
-    next();
+
+    return next();
   },
 ];
 

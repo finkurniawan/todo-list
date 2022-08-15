@@ -9,13 +9,14 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["prettier", "@typescript-eslint"],
+  "plugins": ["prettier:recommended", "@typescript-eslint"],
   "rules": {
     "prettier/prettier": "error",
     "import/no-unresolved": [2, { "caseSensitive": false }],
     "quotes": [2, "single", "avoid-escape"],
     "arrow-body-style": "off",
     "prefer-arrow-callback": "off",
+    "comma-dangle": "off",
     "import/extensions": [
       "error",
       {

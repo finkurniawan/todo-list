@@ -12,12 +12,13 @@ class AuthController {
       username,
       password: hashedPassword,
     });
-    if (!createdUser)
+    if (!createdUser) {
       return res.status(400).json({
         status: false,
         data: {},
         message: 'User not created',
       });
+    }
 
     return res.status(201).json({
       status: true,
@@ -33,25 +34,27 @@ class AuthController {
       where: { username },
     });
 
-    if (!user)
+    if (!user) {
       res.status(400).json({
         status: false,
         data: {},
         message: 'User not found',
         errors: [],
       });
+    }
 
     const compare = await Authentication.passwordCompare(
       password,
       user.password
     );
 
-    if (!compare)
+    if (!compare) {
       res.status(400).json({
         status: false,
         data: {},
         message: "Password doesn't match",
       });
+    }
 
     if (compare) {
       const token = Authentication.generateToken(
@@ -71,9 +74,6 @@ class AuthController {
 
     return res.send('auth failed');
   };
-
-  profile = (req: Request, res: Response): Response =>
-    res.send(req.app.locals.credential);
 }
 
 export default new AuthController();
