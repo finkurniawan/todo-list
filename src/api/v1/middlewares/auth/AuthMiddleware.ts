@@ -7,7 +7,7 @@ const auth = (req: Request, res: Response, next: NextFunction): any => {
   }
 
   const secretKey: string = process.env.JWT_SECRET_KEY || 'asiapp';
-  const token: string = req.headers.authorization.split(' ')[1];
+  const token: any = req.headers.authorization.split(' ')[1];
   console.log(secretKey);
   try {
     const credential: any = jwt.verify(token, secretKey);

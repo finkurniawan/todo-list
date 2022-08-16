@@ -4,14 +4,29 @@ import Authentication from '../../utils/Authentication';
 const db = require('../../models');
 
 class AuthController {
-  register = async (req: Request, res: Response): Promise<Response> => {
-    const { username, password } = req.body;
+  async register(req: Request, res: Response): Promise<Response> {
+    const { username, email, password } = req.body;
     const hashedPassword: string = await Authentication.passwordHash(password);
+
+    const checkEmail = await db.user.findOne({
+      where: {
+        email,
+      },
+    });
+
+    if (checkEmail)
+      return res.status(400).json({
+        status: false,
+        data: {},
+        message: 'Email already exists',
+      });
 
     const createdUser = await db.user.create({
       username,
+      email,
       password: hashedPassword,
     });
+
     if (!createdUser) {
       return res.status(400).json({
         status: false,
@@ -25,13 +40,13 @@ class AuthController {
       data: {},
       message: 'Register successfully',
     });
-  };
+  }
 
   login = async (req: Request, res: Response): Promise<Response> => {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
     const user = await db.user.findOne({
-      where: { username },
+      where: { email },
     });
 
     if (!user) {
@@ -57,11 +72,7 @@ class AuthController {
     }
 
     if (compare) {
-      const token = Authentication.generateToken(
-        user.id,
-        username,
-        user.password
-      );
+      const token = Authentication.generateToken(user.id, email, user.password);
 
       return res.status(200).json({
         status: true,
