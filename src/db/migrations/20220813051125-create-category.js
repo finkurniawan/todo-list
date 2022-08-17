@@ -8,9 +8,11 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       name: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
-      description: {
+      icon: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       created_at: {

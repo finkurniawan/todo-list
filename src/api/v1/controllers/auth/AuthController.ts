@@ -14,12 +14,13 @@ class AuthController {
       },
     });
 
-    if (checkEmail)
+    if (checkEmail) {
       return res.status(400).json({
         status: false,
         data: {},
-        message: 'Email already exists',
+        message: 'Account already exists',
       });
+    }
 
     const createdUser = await db.user.create({
       username,
@@ -38,7 +39,7 @@ class AuthController {
     return res.status(201).json({
       status: true,
       data: {},
-      message: 'Register successfully',
+      message: 'Account created successfully',
     });
   }
 
@@ -54,7 +55,7 @@ class AuthController {
         status: false,
         data: {},
         message: 'User not found',
-        errors: [],
+        errors: {},
       });
     }
 
@@ -79,11 +80,15 @@ class AuthController {
         data: {
           token,
         },
-        message: 'Login Successfully',
+        message: 'Login successfully',
       });
     }
 
-    return res.send('auth failed');
+    return res.status(400).json({
+      status: false,
+      data: {},
+      message: 'Authentication failed',
+    });
   };
 }
 

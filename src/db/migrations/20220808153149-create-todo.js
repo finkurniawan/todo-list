@@ -13,13 +13,18 @@ module.exports = {
         allowNull: false,
       },
       title: {
+        allowNull: false,
         type: Sequelize.TEXT,
       },
       description: {
         type: Sequelize.TEXT,
       },
       is_completed: {
+        allowNull: false,
         type: Sequelize.BOOLEAN,
+      },
+      deadline: {
+        type: Sequelize.TEXT,
       },
       created_at: {
         allowNull: false,
