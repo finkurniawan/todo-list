@@ -15,12 +15,15 @@ module.exports = (sequelize, DataTypes) => {
     {
       name: DataTypes.STRING,
       description: DataTypes.STRING,
+      icon: {
+        type: DataTypes.STRING,
+      },
     },
     {
       sequelize,
       modelName: 'category',
       underscored: true,
-    },
+    }
   );
   return category;
 };

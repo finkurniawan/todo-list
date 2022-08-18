@@ -12,7 +12,7 @@ class ValidationError {
         message: 'Validation Error',
         errors: errors.array(),
       });
-    next();
+    return next();
   }
 }
 

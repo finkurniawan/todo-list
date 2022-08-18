@@ -5,7 +5,7 @@ const db = require('../../models');
 
 class AuthController {
   async register(req: Request, res: Response): Promise<Response> {
-    const { username, email, password } = req.body;
+    const { full_name, username, email, password } = req.body;
     const hashedPassword: string = await Authentication.passwordHash(password);
 
     const checkEmail = await db.user.findOne({
@@ -23,9 +23,11 @@ class AuthController {
     }
 
     const createdUser = await db.user.create({
+      full_name,
       username,
       email,
       password: hashedPassword,
+      image: 'default.jpg',
     });
 
     if (!createdUser) {
@@ -51,7 +53,7 @@ class AuthController {
     });
 
     if (!user) {
-      res.status(400).json({
+      return res.status(400).json({
         status: false,
         data: {},
         message: 'User not found',

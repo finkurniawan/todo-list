@@ -26,6 +26,9 @@ module.exports = {
       deadline: {
         type: Sequelize.TEXT,
       },
+      over_time: {
+        type: Sequelize.STRING,
+      },
       created_at: {
         allowNull: false,
         type: Sequelize.DATE,

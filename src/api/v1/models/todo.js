@@ -18,6 +18,8 @@ module.exports = (sequelize, DataTypes) => {
       title: DataTypes.TEXT,
       description: DataTypes.TEXT,
       is_completed: DataTypes.BOOLEAN,
+      deadline: DataTypes.STRING,
+      over_time: DataTypes.STRING,
     },
     {
       sequelize,
