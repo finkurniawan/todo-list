@@ -1,24 +1,9 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
 import Authentication from '../../utils/Authentication';
+import BaseService from '../BaseService';
 const db = require('../../models');
 
-class AuthService {
-  body: Request['body'];
-  app: Request['app'];
-  params: Request['params'];
-  status: Response['status'];
-  json: Response['json'];
-  send: Response['send'];
-
-  constructor(req: Request, res: Response) {
-    this.body = req.body;
-    this.params = req.params;
-    this.app = req.app;
-    this.status = res.status;
-    this.json = res.json;
-    this.send = res.send;
-  }
-
+class AuthService extends BaseService {
   async register(): Promise<Response> {
     const { full_name, username, email, password } = this.body;
     const hashedPassword: string = await Authentication.passwordHash(password);
@@ -30,7 +15,7 @@ class AuthService {
     });
 
     if (checkEmail) {
-      return this.status(400).json({
+      return this.res.status(400).json({
         status: false,
         message: 'Account already exists',
         data: {},
@@ -46,14 +31,14 @@ class AuthService {
     });
 
     if (!createdUser) {
-      return this.status(400).json({
+      return this.res.status(400).json({
         status: false,
         data: {},
         message: 'User not created',
       });
     }
 
-    return this.status(201).json({
+    return this.res.status(201).json({
       status: true,
       data: {},
       message: 'Account created successfully',
@@ -68,7 +53,7 @@ class AuthService {
     });
 
     if (!user) {
-      return this.status(400).json({
+      return this.res.status(400).json({
         status: false,
         data: {},
         message: 'User not found',
@@ -82,7 +67,7 @@ class AuthService {
     );
 
     if (!compare) {
-      this.status(400).json({
+      this.res.status(400).json({
         status: false,
         data: {},
         message: "Password doesn't match",
@@ -92,7 +77,7 @@ class AuthService {
     if (compare) {
       const token = Authentication.generateToken(user.id, email, user.password);
 
-      return this.status(200).json({
+      return this.res.status(200).json({
         status: true,
         data: {
           token,
@@ -101,7 +86,7 @@ class AuthService {
       });
     }
 
-    return this.status(400).json({
+    return this.res.status(400).json({
       status: false,
       data: {},
       message: 'Authentication failed',

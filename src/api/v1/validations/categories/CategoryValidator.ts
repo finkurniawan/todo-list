@@ -1,16 +1,17 @@
-import { Request, Response, NextFunction } from 'express';
-import { check, validationResult } from 'express-validator';
+import { body } from 'express-validator';
 
-const validate = [
-  check('name').isString(),
-  (req: Request, res: Response, next: NextFunction) => {
-    const errors = validationResult(req);
+class CategoryValidator {
+  checkCategory() {
+    return [
+      body('name')
+        .isString()
+        .withMessage('This field must be a string')
+        .notEmpty()
+        .withMessage('This field is required')
+        .isLength({ min: 3 })
+        .withMessage('This field must be at least 3 characters long'),
+    ];
+  }
+}
 
-    if (!errors.isEmpty()) {
-      return res.status(422).send({ errors: errors.array() });
-    }
-    return next();
-  },
-];
-
-export default validate;
+export default new CategoryValidator();

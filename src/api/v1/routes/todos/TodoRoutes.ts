@@ -2,7 +2,7 @@ import Todo from '../../controllers/todos/TodoController';
 import BaseRoutes from '../BaseRouter';
 import auth from '../../middlewares/auth/AuthMiddleware';
 import Validate from '../../validations/todos/TodoValidator';
-import e from '../../middlewares/validationErrorMiddleware';
+import v from '../../middlewares/validationErrorMiddleware';
 
 class TodoRoutes extends BaseRoutes {
   public routes(): void {
@@ -12,14 +12,14 @@ class TodoRoutes extends BaseRoutes {
       '/',
       auth,
       Validate.checkCreateTodo(),
-      e.handleValidationError,
+      v.handleValidationError,
       Todo.create
     );
     this.router.put(
       '/:id',
       auth,
       Validate.checkUpdateTodo(),
-      e.handleValidationError,
+      v.handleValidationError,
       Todo.update
     );
     this.router.delete('/:id', auth, Todo.delete);
