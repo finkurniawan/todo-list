@@ -15,11 +15,12 @@ module.exports = (sequelize, DataTypes) => {
   todo.init(
     {
       user_id: DataTypes.INTEGER,
+      category_id: DataTypes.INTEGER,
       title: DataTypes.TEXT,
       description: DataTypes.TEXT,
       is_completed: DataTypes.BOOLEAN,
-      deadline: DataTypes.STRING,
-      over_time: DataTypes.STRING,
+      deadline: DataTypes.DATE,
+      over_time: DataTypes.BOOLEAN,
     },
     {
       sequelize,

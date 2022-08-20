@@ -1,14 +1,26 @@
 import { Request, Response } from 'express';
-import AuthService from '../../services/accounts/AuthService';
-
+import Authentication from '../../utils/Authentication';
 const db = require('../../models');
 
-class AuthController {
-  async register(req: Request, res: Response): Promise<Response> {
-    const service: AuthService = new AuthService(req,res);
-    const data = await service.register();
-   
-    const { full_name, username, email, password } = req.body;
+class AuthService {
+  body: Request['body'];
+  app: Request['app'];
+  params: Request['params'];
+  status: Response['status'];
+  json: Response['json'];
+  send: Response['send'];
+
+  constructor(req: Request, res: Response) {
+    this.body = req.body;
+    this.params = req.params;
+    this.app = req.app;
+    this.status = res.status;
+    this.json = res.json;
+    this.send = res.send;
+  }
+
+  async register(): Promise<Response> {
+    const { full_name, username, email, password } = this.body;
     const hashedPassword: string = await Authentication.passwordHash(password);
 
     const checkEmail = await db.user.findOne({
@@ -18,10 +30,10 @@ class AuthController {
     });
 
     if (checkEmail) {
-      return res.status(400).json({
+      return this.status(400).json({
         status: false,
-        data: {},
         message: 'Account already exists',
+        data: {},
       });
     }
 
@@ -34,31 +46,29 @@ class AuthController {
     });
 
     if (!createdUser) {
-      return res.status(400).json({
+      return this.status(400).json({
         status: false,
         data: {},
         message: 'User not created',
       });
     }
 
-    return res.status(201).json({
+    return this.status(201).json({
       status: true,
       data: {},
       message: 'Account created successfully',
     });
   }
 
-  login = async (req: Request, res: Response): Promise<Response> {
-    const service: AuthService = new AuthService(req,res);
-    const data = await service.store();
-     const { email, password } = req.body;
+  async login(): Promise<Response> {
+    const { email, password } = this.body;
 
     const user = await db.user.findOne({
       where: { email },
     });
 
     if (!user) {
-      return res.status(400).json({
+      return this.status(400).json({
         status: false,
         data: {},
         message: 'User not found',
@@ -72,7 +82,7 @@ class AuthController {
     );
 
     if (!compare) {
-      res.status(400).json({
+      this.status(400).json({
         status: false,
         data: {},
         message: "Password doesn't match",
@@ -82,7 +92,7 @@ class AuthController {
     if (compare) {
       const token = Authentication.generateToken(user.id, email, user.password);
 
-      return res.status(200).json({
+      return this.status(200).json({
         status: true,
         data: {
           token,
@@ -91,12 +101,12 @@ class AuthController {
       });
     }
 
-    return res.status(400).json({
+    return this.status(400).json({
       status: false,
       data: {},
       message: 'Authentication failed',
     });
-  };
+  }
 }
 
-export default new AuthController();
+export default AuthService;

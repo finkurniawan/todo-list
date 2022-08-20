@@ -3,15 +3,14 @@ import { Request } from 'express';
 const db = require('../../models');
 
 class CategoryService {
-
   body: Request['body'];
-
+  app: Request['app'];
   params: Request['params'];
 
   constructor(req: Request) {
-
     this.body = req.body;
     this.params = req.params;
+    this.app = req.app;
   }
 
   getAll = async () => {
@@ -20,19 +19,21 @@ class CategoryService {
   };
 
   store = async () => {
-    const { name, description } = this.body;
+    const { name } = this.body;
+    const { id } = this.app.locals.credential;
 
     const category = await db.category.create({
+      user_id: id,
       name,
-      description,
     });
     return category;
   };
 
-  getOne = async () => {
-    const { id } = this.params;
-    const category = await db.category.findOne({
-      where: { id },
+  getAllFilter = async () => {
+    // const { id: category_id } = this.params;
+    const { id: user_id } = this.app.locals.credential;
+    const category = await db.todo.findAll({
+      where: { category_id: 3, user_id },
     });
 
     return category;
@@ -47,7 +48,7 @@ class CategoryService {
         description,
       },
       {
-        where: { id},
+        where: { id },
       }
     );
 

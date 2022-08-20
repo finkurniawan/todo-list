@@ -9,7 +9,7 @@ class Todo implements IController {
 
     return res.send({
       data: todos,
-      message: '',
+      message: 'Get all todo successfully',
     });
   };
 

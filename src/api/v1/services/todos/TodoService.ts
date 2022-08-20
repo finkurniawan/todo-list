@@ -26,13 +26,22 @@ class TodoService {
   };
 
   store = async () => {
-    const { title, description, isCompleted } = this.body;
-
+    const {
+      title,
+      description,
+      isCompleted,
+      deadLine: deadline,
+      categoryId: category_id,
+    } = this.body;
+    const isOverTime = deadline <= new Date();
     const todo = await db.todo.create({
       user_id: this.credential.id,
       title,
       description,
       is_completed: isCompleted,
+      deadline,
+      category_id,
+      over_time: isOverTime,
     });
     return todo;
   };

@@ -24,10 +24,14 @@ module.exports = {
         type: Sequelize.BOOLEAN,
       },
       deadline: {
-        type: Sequelize.TEXT,
+        type: Sequelize.DATE,
+      },
+      category_id: {
+        default: '1',
+        type: Sequelize.INTEGER,
       },
       over_time: {
-        type: Sequelize.STRING,
+        type: Sequelize.BOOLEAN,
       },
       created_at: {
         allowNull: false,

@@ -25,7 +25,7 @@ class Category implements IController {
 
   show = async (req: Request, res: Response): Promise<Response> => {
     const service: CategoryService = new CategoryService(req);
-    const category = await service.getOne();
+    const category = await service.getAllFilter();
 
     return res.send({
       data: category,

@@ -18,12 +18,13 @@ class AuthRoutes extends BaseRoutes {
       ValidationError.handleValidationError,
       AuthController.login
     );
+    this.router.get('/profile', Auth, Profile.index);
     this.router.put(
       '/profile',
       Auth,
       AccountValidator.checkUpdateProfile(),
       ValidationError.handleValidationError,
-      Profile.updateProfile
+      Profile.update
     );
   }
 }
