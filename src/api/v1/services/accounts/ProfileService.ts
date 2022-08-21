@@ -1,11 +1,17 @@
 import { Response } from 'express';
+import Authentication from '../../utils/Authentication';
 import BaseService from '../BaseService';
+
 const db = require('../../models');
 
 class ProfileService extends BaseService {
   async update(): Promise<Response> {
     const { body } = this;
     const { id } = this.app.locals.credential;
+    const hashedPassword: string = await Authentication.passwordHash(
+      body.password
+    );
+
     const checkUserAlready = await db.user.findOne({
       where: id,
     });
@@ -13,15 +19,16 @@ class ProfileService extends BaseService {
     if (!checkUserAlready) {
       return this.res.status(400).json({
         status: false,
-        data: {},
         message: 'User not found',
         errors: {},
+        data: {},
       });
     }
 
     const updatedUser = await db.user.update(
       {
         ...body,
+        password: hashedPassword,
       },
       {
         where: {
@@ -33,18 +40,19 @@ class ProfileService extends BaseService {
     if (!updatedUser) {
       return this.res.status(400).json({
         status: false,
-        data: {},
         message: 'User not updated',
         errors: {},
-      });
-    } else {
-      return this.res.status(200).json({
-        status: true,
         data: {},
-        message: 'ProfileService updated successfully',
       });
     }
+    return this.res.status(200).json({
+      status: true,
+      message: 'Profile updated successfully',
+      errors: {},
+      data: {},
+    });
   }
+
   async index(): Promise<Response> {
     const { id } = this.app.locals.credential;
     const checkUserAlready = await db.user.findOne({
@@ -54,9 +62,9 @@ class ProfileService extends BaseService {
     if (!checkUserAlready) {
       return this.res.status(400).json({
         status: false,
-        data: {},
         message: 'User not found',
         errors: {},
+        data: {},
       });
     }
 
@@ -64,6 +72,14 @@ class ProfileService extends BaseService {
       where: {
         id,
       },
+      attributes: [
+        'id',
+        'username',
+        'email',
+        'image',
+        'createdAt',
+        'updatedAt',
+      ],
     });
 
     if (!user) {
@@ -75,8 +91,8 @@ class ProfileService extends BaseService {
       });
     }
 
-    return this.res.status(400).json({
-      status: false,
+    return this.res.status(200).json({
+      status: true,
       message: 'Get details successfully',
       errors: {},
       data: {

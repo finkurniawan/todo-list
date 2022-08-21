@@ -1,5 +1,5 @@
 Arguments: 
-  /home/finmcmissile/.config/nvm/versions/node/v16.16.0/bin/node /usr/bin/yarn add ts-node -D
+  /home/finmcmissile/.config/nvm/versions/node/v16.16.0/bin/node /usr/bin/yarn add eslint-plugin-prettier:recommended -D
 
 PATH: 
   /home/finmcmissile/.config/nvm/versions/node/v16.16.0/bin:/home/finmcmissile/.nvm/versions/node/v12.22.12/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/finmcmissile/.fzf/bin
@@ -14,10 +14,15 @@ Platform:
   linux x64
 
 Trace: 
-  Error: Client network socket disconnected before secure TLS connection was established
-      at connResetException (node:internal/errors:692:14)
-      at TLSSocket.onConnectEnd (node:_tls_wrap:1587:19)
-      at TLSSocket.emit (node:events:539:35)
+  Error: https://registry.yarnpkg.com/eslint-plugin-prettier:recommended: Not found
+      at Request.params.callback [as _callback] (/usr/lib/node_modules/yarn/lib/cli.js:66145:18)
+      at Request.self.callback (/usr/lib/node_modules/yarn/lib/cli.js:140890:22)
+      at Request.emit (node:events:527:28)
+      at Request.<anonymous> (/usr/lib/node_modules/yarn/lib/cli.js:141862:10)
+      at Request.emit (node:events:527:28)
+      at IncomingMessage.<anonymous> (/usr/lib/node_modules/yarn/lib/cli.js:141784:12)
+      at Object.onceWrapper (node:events:641:28)
+      at IncomingMessage.emit (node:events:539:35)
       at endReadableNT (node:internal/streams/readable:1345:12)
       at processTicksAndRejections (node:internal/process/task_queues:83:21)
 
@@ -80,6 +85,7 @@ npm manifest:
       "module-alias": "^2.2.2",
       "morgan": "^1.10.0",
       "pg": "^8.7.3",
+      "pg-hstore": "^2.3.4",
       "sequelize": "^6.21.3",
       "sequelize-cli": "^6.4.1",
       "ts-node": "^10.9.1",
@@ -3945,6 +3951,13 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/pg-connection-string/-/pg-connection-string-2.5.0.tgz#538cadd0f7e603fc09a12590f3b8a452c2c0cf34"
     integrity sha512-r5o/V/ORTA6TmUnyWZR9nCj1klXCO2CEKNRlVuJptZe85QuhFayC7WeMic7ndayT5IRIR0S0xFxFi2ousartlQ==
   
+  pg-hstore@^2.3.4:
+    version "2.3.4"
+    resolved "https://registry.yarnpkg.com/pg-hstore/-/pg-hstore-2.3.4.tgz#4425e3e2a3e15d2a334c35581186c27cf2e9b8dd"
+    integrity sha512-N3SGs/Rf+xA1M2/n0JBiXFDVMzdekwLZLAO0g7mpDY9ouX+fDI7jS6kTq3JujmYbtNSJ53TJ0q4G98KVZSM4EA==
+    dependencies:
+      underscore "^1.13.1"
+  
   pg-int8@1.0.1:
     version "1.0.1"
     resolved "https://registry.yarnpkg.com/pg-int8/-/pg-int8-1.0.1.tgz#943bd463bf5b71b4170115f80f8efc9a0c0eb78c"
@@ -4761,6 +4774,11 @@ Lockfile:
     version "2.0.5"
     resolved "https://registry.yarnpkg.com/undefsafe/-/undefsafe-2.0.5.tgz#38733b9327bdcd226db889fb723a6efd162e6e2c"
     integrity sha512-WxONCrssBM8TSPRqN5EmsjVrsv4A8X12J4ArBiiayv3DyyG3ZlIg6yysuuSYdZsVz3TKcTg2fd//Ujd4CHV1iA==
+  
+  underscore@^1.13.1:
+    version "1.13.4"
+    resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.13.4.tgz#7886b46bbdf07f768e0052f1828e1dcab40c0dee"
+    integrity sha512-BQFnUDuAQ4Yf/cYY5LNrK9NCJFKriaRbD9uR1fTeXnBeoa97W0i41qkZfGO9pSo8I5KzjAcSY2XYtdf0oKd7KQ==
   
   universalify@^2.0.0:
     version "2.0.0"

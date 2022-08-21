@@ -1,68 +1,123 @@
-import { Request } from 'express';
+import BaseService from '../BaseService';
 
 const db = require('../../models');
 
-class CategoryService {
-  body: Request['body'];
-  app: Request['app'];
-  params: Request['params'];
-
-  constructor(req: Request) {
-    this.body = req.body;
-    this.params = req.params;
-    this.app = req.app;
-  }
-
+class CategoryService extends BaseService {
   getAll = async () => {
-    const categories = db.category.findAll();
-    return categories;
+    try {
+      let { limit = 10, offset = 0 } = this.query;
+      if (limit >= 100) {
+        limit = 100;
+      }
+      const categories = db.category.findAll({
+        where: {
+          user_id: this.credential.id,
+        },
+        limit,
+        offset,
+        attributes: ['id', 'name', 'createdAt', 'updatedAt', 'icon'],
+      });
+      return categories;
+    } catch (_) {
+      return this.res.status(400).json({
+        status: false,
+        message: 'Category not found',
+        errors: {},
+        data: {},
+      });
+    }
   };
 
   store = async () => {
     const { name } = this.body;
-    const { id } = this.app.locals.credential;
+    const { id: user_id } = this.credential;
 
-    const category = await db.category.create({
-      user_id: id,
-      name,
-    });
-    return category;
+    try {
+      const category = await db.category.create(
+        {
+          user_id,
+          name,
+        },
+        { fields: ['name', 'user_id', 'createdAt', 'updatedAt'] }
+      );
+      return category;
+    } catch (_) {
+      return this.res.status(400).json({
+        status: false,
+        message: 'Category not created',
+        errors: {},
+        data: {},
+      });
+    }
   };
 
   getAllFilter = async () => {
-    // const { id: category_id } = this.params;
-    const { id: user_id } = this.app.locals.credential;
-    const category = await db.todo.findAll({
-      where: { category_id: 3, user_id },
-    });
+    try {
+      const { id: category_id } = this.params;
+      const { id: user_id } = this.credential;
+      const { limit = 10, offset = 0 } = this.query;
+      if (limit >= 100) {
+        limit = 100;
+      }
+      const category = await db.todo.findAll({
+        where: { category_id, user_id },
+        offset,
+        limit,
+      });
 
-    return category;
+      return category;
+    } catch (_) {
+      return this.res.status(400).json({
+        status: false,
+        message: 'Category not found',
+        errors: {},
+        data: {},
+      });
+    }
   };
 
   update = async () => {
     const { id } = this.params;
     const { name, description } = this.body;
-    const category = await db.category.update(
-      {
-        name,
-        description,
-      },
-      {
-        where: { id },
-      }
-    );
+    try {
+      const category = await db.category.update(
+        {
+          name,
+          description,
+        },
+        {
+          where: { id, user_id: this.credential.id },
+        }
+      );
 
-    return category;
+      return category;
+    } catch (_) {
+      return this.res.status(400).json({
+        status: false,
+        message: 'Category not updated',
+        errors: {},
+        data: {},
+      });
+    }
   };
 
   delete = async () => {
     const { id } = this.params;
 
-    const category = await db.category.destroy({
-      where: { id },
-    });
+    try {
+      const category = await db.category.destroy({
+        where: { id, user_id: this.credential.id },
+      });
 
-    return category;
+      return category;
+    } catch (_) {
+      return this.res.status(400).json({
+        status: false,
+        message: 'Category not deleted',
+        errors: {},
+        data: {},
+      });
+    }
   };
 }
 

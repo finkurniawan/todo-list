@@ -9,7 +9,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["prettier:recommended", "@typescript-eslint"],
+  "plugins": ["prettier", "@typescript-eslint"],
   "rules": {
     "prettier/prettier": "error",
     "import/no-unresolved": [2, { "caseSensitive": false }],
@@ -17,6 +17,7 @@
     "arrow-body-style": "off",
     "prefer-arrow-callback": "off",
     "comma-dangle": "off",
+    "camelcase": "off",
     "import/extensions": [
       "error",
       {

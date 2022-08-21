@@ -35,9 +35,9 @@ class App {
     this.APP.use('*', (_, res: Response) =>
       res.status(404).json({
         status: false,
-        data: null,
         message: 'Page not found',
         errors: [],
+        data: null,
       })
     );
   }

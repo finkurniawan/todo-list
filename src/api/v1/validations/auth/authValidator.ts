@@ -54,15 +54,6 @@ class AccountValidator {
 
   checkUpdateProfile() {
     return [
-      body('full_name')
-        .isString()
-        .withMessage('The full_name value should be a string')
-        .notEmpty()
-        .withMessage('The full_name value should not be empty')
-        .isLength({ max: 50, min: 1 })
-        .withMessage(
-          'The full_name value should be between 1 and 50 characters'
-        ),
       body('email')
         .notEmpty()
         .withMessage('The email value should not be empty')

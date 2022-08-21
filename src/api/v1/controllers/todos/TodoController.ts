@@ -4,52 +4,62 @@ import TodoService from '../../services/todos/TodoService';
 
 class Todo implements IController {
   index = async (req: Request, res: Response): Promise<Response> => {
-    const service: TodoService = new TodoService(req);
+    const service: TodoService = new TodoService(req, res);
     const todos = await service.getAll();
 
-    return res.send({
-      data: todos,
+    return res.status(200).json({
+      status: true,
       message: 'Get all todo successfully',
+      errors: {},
+      data: todos,
     });
   };
 
   create = async (req: Request, res: Response): Promise<Response> => {
-    const service: TodoService = new TodoService(req);
+    const service: TodoService = new TodoService(req, res);
     const todo = await service.store();
 
-    return res.send({
-      data: todo,
+    return res.status(201).json({
+      status: true,
       message: ' todo created',
+      errors: {},
+      data: todo,
     });
   };
 
   show = async (req: Request, res: Response): Promise<Response> => {
-    const service: TodoService = new TodoService(req);
+    const service: TodoService = new TodoService(req, res);
     const todo = await service.getOne();
 
-    return res.send({
-      data: todo,
+    return res.status(200).json({
+      status: true,
       message: '',
+      errors: {},
+      data: todo,
     });
   };
 
   update = async (req: Request, res: Response): Promise<Response> => {
-    const service: TodoService = new TodoService(req);
-    const todo = await service.update();
+    const service: TodoService = new TodoService(req, res);
+    await service.update();
 
-    return res.send({
-      data: todo,
+    return res.status(200).json({
+      status: true,
       message: 'success updated',
+      errors: {},
+      data: {},
     });
   };
 
   delete = async (req: Request, res: Response): Promise<Response> => {
-    const service: TodoService = new TodoService(req);
-    const todo = await service.delete();
+    const service: TodoService = new TodoService(req, res);
+    await service.delete();
 
-    return res.send({
-      data: todo,
+    return res.status(200).json({
+      status: true,
       message: 'todo deleted',
+      errors: {},
+      data: {},
     });
   };
 }
