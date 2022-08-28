@@ -5,7 +5,7 @@ const db = require('../../models');
 class TodoService extends BaseService {
   getAll = async () => {
     try {
-      const { limit = 10, offset = 0 } = this.query;
+      let { limit = 10, offset = 0 } = this.query;
       if (limit >= 100) {
         limit = 100;
       }

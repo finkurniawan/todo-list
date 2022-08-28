@@ -55,7 +55,7 @@ class CategoryService extends BaseService {
     try {
       const { id: category_id } = this.params;
       const { id: user_id } = this.credential;
-      const { limit = 10, offset = 0 } = this.query;
+      let { limit = 10, offset = 0 } = this.query;
       if (limit >= 100) {
         limit = 100;
       }

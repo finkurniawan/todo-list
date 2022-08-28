@@ -10,6 +10,7 @@ class BaseService {
   credential: Request['app']['locals']['credential'];
 
   res: Response;
+  req: Request;
 
   constructor(req: Request, res: Response) {
     this.credential = req.app.locals.credential;
@@ -17,6 +18,7 @@ class BaseService {
     this.body = req.body;
     this.app = req.app;
     this.res = res;
+    this.req = req;
     this.query = req.query;
   }
 }

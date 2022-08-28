@@ -40,11 +40,42 @@ class AuthService extends BaseService {
       });
     }
 
+    const user = await db.user.findOne({
+      where: { email },
+    });
+
+    if (!user) {
+      return this.res.status(400).json({
+        status: false,
+        message: 'User not found',
+        errors: {},
+        data: {},
+      });
+    }
+
+    const compare = await Authentication.passwordCompare(
+      password,
+      user.password
+    );
+
+    if (!compare) {
+      this.res.status(400).json({
+        status: false,
+        message: "Password doesn't match",
+        errors: {},
+        data: {},
+      });
+    }
+
+    const token = Authentication.generateToken(user.id);
+
     return this.res.status(201).json({
       status: true,
       message: 'Account created successfully',
       errors: {},
-      data: {},
+      data: {
+        token,
+      },
     });
   }
 

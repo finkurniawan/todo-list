@@ -7,6 +7,7 @@ class Profile {
     const data = await service.update();
     return data;
   }
+
   async index(req: Request, res: Response): Promise<Response> {
     const service: ProfileService = new ProfileService(req, res);
     const data = await service.index();
