@@ -7,12 +7,7 @@ class Category implements IController {
     const service: CategoryService = new CategoryService(req, res);
     const categories = await service.getAll();
 
-    return res.status(200).json({
-      status: true,
-      message: 'Get all category successfully',
-      errors: {},
-      data: categories,
-    });
+    return categories;
   };
 
   create = async (req: Request, res: Response): Promise<Response> => {
@@ -31,12 +26,7 @@ class Category implements IController {
     const service: CategoryService = new CategoryService(req, res);
     const category = await service.getAllFilter();
 
-    return res.status(200).json({
-      status: true,
-      message: 'Get all todo by category successfully',
-      errors: {},
-      data: category,
-    });
+    return category;
   };
 
   update = async (req: Request, res: Response): Promise<Response> => {

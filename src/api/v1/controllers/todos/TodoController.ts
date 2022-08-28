@@ -7,12 +7,7 @@ class Todo implements IController {
     const service: TodoService = new TodoService(req, res);
     const todos = await service.getAll();
 
-    return res.status(200).json({
-      status: true,
-      message: 'Get all todo successfully',
-      errors: {},
-      data: todos,
-    });
+    return todos;
   };
 
   create = async (req: Request, res: Response): Promise<Response> => {

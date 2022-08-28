@@ -9,7 +9,8 @@ class CategoryService extends BaseService {
       if (limit >= 100) {
         limit = 100;
       }
-      const categories = db.category.findAll({
+
+      const categories = await db.category.findAll({
         where: {
           user_id: this.credential.id,
         },
@@ -17,7 +18,22 @@ class CategoryService extends BaseService {
         offset,
         attributes: ['id', 'name', 'createdAt', 'updatedAt', 'icon'],
       });
-      return categories;
+
+      const total = await db.category.count({
+        where: {
+          user_id: this.credential.id,
+        },
+      });
+
+      return this.res.status(200).json({
+        status: true,
+        message: 'Successfully',
+        errors: {},
+        data: {
+          categories,
+          total,
+        },
+      });
     } catch (_) {
       return this.res.status(400).json({
         status: false,
@@ -65,7 +81,20 @@ class CategoryService extends BaseService {
         limit,
       });
 
-      return category;
+      const total = await db.todo.count({
+        where: {
+          category_id,
+          user_id: this.credential.id,
+        },
+      });
+
+      return this.res.status(200).json({
+        status: true,
+        message: 'Get all todo by category successfully',
+        errors: {},
+        category,
+        total,
+      });
     } catch (_) {
       return this.res.status(400).json({
         status: false,

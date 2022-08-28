@@ -9,7 +9,7 @@ class TodoService extends BaseService {
       if (limit >= 100) {
         limit = 100;
       }
-      const todos = db.todo.findAll({
+      const todos = await db.todo.findAll({
         where: { user_id: this.credential.id },
         attributes: [
           'id',
@@ -24,7 +24,22 @@ class TodoService extends BaseService {
         offset,
         limit,
       });
-      return todos;
+
+      const total = await db.todo.count({
+        where: {
+          user_id: this.credential.id,
+        },
+      });
+
+      return this.res.status(200).json({
+        status: true,
+        message: 'Get all todo successfully',
+        errors: {},
+        data: {
+          todos,
+          total,
+        },
+      });
     } catch (_) {
       return this.res.status(400).json({
         status: false,
