@@ -10,6 +10,11 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       todo.belongsTo(models.user);
+
+      models.category.hasOne(models.todo);
+      todo.belongsTo(models.category, {
+        foreignKey: 'category_id',
+      });
     }
   }
   todo.init(

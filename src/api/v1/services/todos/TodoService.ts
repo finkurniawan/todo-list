@@ -9,8 +9,10 @@ class TodoService extends BaseService {
       if (limit >= 100) {
         limit = 100;
       }
+
       const todos = await db.todo.findAll({
         where: { user_id: this.credential.id },
+        include: [{ model: db.category }],
         attributes: [
           'id',
           'title',
@@ -52,19 +54,14 @@ class TodoService extends BaseService {
 
   store = async () => {
     try {
-      const {
-        title,
-        description,
-        isCompleted,
-        deadLine: deadline,
-        categoryId: category_id,
-      } = this.body;
+      const { title, description, is_completed, deadline, category_id } =
+        this.body;
       const isOverTime = deadline <= new Date();
       const todo = await db.todo.create({
         user_id: this.credential.id,
         title,
         description,
-        is_completed: isCompleted,
+        is_completed,
         deadline,
         category_id,
         over_time: isOverTime,
@@ -112,12 +109,12 @@ class TodoService extends BaseService {
   update = async () => {
     try {
       const { id } = this.params;
-      const { title, description, isCompleted } = this.body;
+      const { title, description, is_completed } = this.body;
       const todo = await db.todo.update(
         {
           title,
           description,
-          is_completed: isCompleted,
+          is_completed,
         },
         {
           where: { id, user_id: this.credential.id },

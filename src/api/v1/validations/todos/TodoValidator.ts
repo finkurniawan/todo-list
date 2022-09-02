@@ -19,18 +19,24 @@ class TodoValidator {
         .withMessage(
           'The description value should be between 1 and 50 characters'
         ),
-      body('deadLine')
-        // .isDate()
-        // .withMessage('The deadLine value should be a date')
+      body('deadline')
+        .isDate()
+        .withMessage('The deadLine value should be a date')
         .notEmpty()
         .withMessage('The deadLine value should not be empty'),
-      body('isCompleted')
+      body('is_completed')
         .isBoolean()
         .withMessage('The isCompleted value should be a boolean')
         .notEmpty()
         .withMessage('The isCompleted value should not be empty'),
+      body('category_id')
+        .isString()
+        .withMessage('The category id value should be a string')
+        .notEmpty()
+        .withMessage('The category id value should not be empty'),
     ];
   }
+
   checkUpdateTodo() {
     return [
       body('title')
@@ -49,14 +55,16 @@ class TodoValidator {
         .withMessage(
           'The description value should be between 1 and 50 characters'
         ),
-      // body('deadLine')
-      // .isDate()
-      // .withMessage('The deadLine value should be a date'),
-      body('isCompleted')
+      body('is_completed')
         .isBoolean()
         .withMessage('The isCompleted value should be a boolean')
         .notEmpty()
         .withMessage('The isCompleted value should not be empty'),
+      body('category_id')
+        .isString()
+        .withMessage('The category id value should be a string')
+        .notEmpty()
+        .withMessage('The category id value should not be empty'),
     ];
   }
 }
