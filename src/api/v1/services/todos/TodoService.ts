@@ -56,7 +56,7 @@ class TodoService extends BaseService {
     try {
       const { title, description, is_completed, deadline, category_id } =
         this.body;
-      const isOverTime = deadline <= new Date();
+      const isOverTime = deadline <= new Date.now();
       const todo = await db.todo.create({
         user_id: this.credential.id,
         title,
