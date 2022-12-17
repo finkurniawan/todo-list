@@ -56,7 +56,7 @@ class TodoService extends BaseService {
     try {
       const { title, description, is_completed, deadline, category_id } =
         this.body;
-      const isOverTime = deadline <= new Date.now();
+      const isOverTime:any = deadline <=  Date.now();
       const todo = await db.todo.create({
         user_id: this.credential.id,
         title,
@@ -68,12 +68,7 @@ class TodoService extends BaseService {
       });
       return todo;
     } catch (_) {
-      return this.res.status(400).json({
-        status: false,
-        message: 'Todo not created',
-        errors: {},
-        data: {},
-      });
+    return false;
     }
   };
 
@@ -130,12 +125,7 @@ class TodoService extends BaseService {
       }
       return todo;
     } catch (_) {
-      return this.res.status(400).json({
-        status: false,
-        message: 'Todo not found',
-        errors: {},
-        data: {},
-      });
+    return false
     }
   };
 

@@ -1,5 +1,8 @@
 import BaseService from '../BaseService';
-
+import {AppError,HttpCode} from '../../exceptions/appError'
+import App from "../../../../app";
+import { BaseError } from "../../exceptions/classes/base-error";
+import { APIError } from "../../exceptions/classes/api-error";
 const db = require('../../models');
 
 class CategoryService extends BaseService {
@@ -120,13 +123,16 @@ class CategoryService extends BaseService {
       );
 
       return category;
-    } catch (_) {
-      return this.res.status(400).json({
-        status: false,
-        message: 'Category not updated',
-        errors: {},
-        data: {},
-      });
+    } catch (err) {
+      // return this.res.status(400).json({
+      //   status: false,
+      //   message: 'Category not updated',
+      //   errors: {},
+      //   data: {},
+      // });
+      const message = err instanceof APIError ? err.message : `Generic error for user`;
+      this.res.status((<BaseError>err)?.httpCode || 500).send(message);
+      next(err);
     }
   };
 

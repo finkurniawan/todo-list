@@ -3,6 +3,7 @@ import IController from '../Interface';
 import CategoryService from '../../services/categories/CategoryService';
 
 class Category implements IController {
+  // eslint-disable-next-line class-methods-use-this
   index = async (req: Request, res: Response): Promise<Response> => {
     const service: CategoryService = new CategoryService(req, res);
     const categories = await service.getAll();

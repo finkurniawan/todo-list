@@ -17,7 +17,7 @@ class Authentication {
     const secretKey: string | any = process.env.JWT_SECRET_KEY;
 
     const token: string = jwt.sign({ id }, secretKey, {
-      expiresIn: '86400',
+      expiresIn: '1d',// '86400',
     });
 
     return token;

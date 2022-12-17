@@ -20,7 +20,7 @@ class TodoValidator {
           'The description value should be between 1 and 50 characters'
         ),
       body('deadline')
-        .isDate()
+        .isString()
         .withMessage('The deadLine value should be a date')
         .notEmpty()
         .withMessage('The deadLine value should not be empty'),
@@ -30,7 +30,7 @@ class TodoValidator {
         .notEmpty()
         .withMessage('The isCompleted value should not be empty'),
       body('category_id')
-        .isString()
+        .isInt()
         .withMessage('The category id value should be a string')
         .notEmpty()
         .withMessage('The category id value should not be empty'),
