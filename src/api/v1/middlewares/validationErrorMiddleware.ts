@@ -6,7 +6,7 @@ class ValidationError {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      res.status(400).json({
+      return res.status(400).json({
         status: false,
         data: null,
         message: 'Validation Error',

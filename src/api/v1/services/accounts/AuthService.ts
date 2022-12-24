@@ -7,7 +7,6 @@ const db = require('../../models');
 class AuthService extends BaseService {
   async register(): Promise<Response> {
     const { username, email, password } = this.body;
-    console.log(password)
     const hashedPassword: string = await Authentication.passwordHash(password);
 
     const checkEmail = await db.user.findOne({

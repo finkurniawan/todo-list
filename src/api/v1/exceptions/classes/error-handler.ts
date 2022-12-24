@@ -1,19 +1,19 @@
-import { logger } from './logger';
 import bunyan from 'bunyan';
+import { logger } from './logger';
 import { BaseError } from './base-error';
 
 export class ErrorHandler {
-    logger: bunyan;
+  logger: bunyan;
 
-    constructor(logger: bunyan) {
-        this.logger = logger;
-    }
+  constructor(logger: bunyan) {
+    this.logger = logger;
+  }
 
-    public async handleError(err: Error): Promise<void> {
-        logger.error(err);
-    }
+  public async handleError(err: Error): Promise<void> {
+    logger.error(err);
+  }
 
-    public isTrustedError(error: Error) {
-        return error instanceof BaseError && error.isOperational;
-    }
+  public isTrustedError(error: Error) {
+    return error instanceof BaseError && error.isOperational;
+  }
 }

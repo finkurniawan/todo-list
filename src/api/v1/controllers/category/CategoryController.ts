@@ -1,9 +1,8 @@
 import { Request, Response } from 'express';
-import IController from '../Interface';
+import ICategory from './ICategory';
 import CategoryService from '../../services/categories/CategoryService';
 
-class Category implements IController {
-  // eslint-disable-next-line class-methods-use-this
+class Category implements ICategory {
   index = async (req: Request, res: Response): Promise<Response> => {
     const service: CategoryService = new CategoryService(req, res);
     const categories = await service.getAll();
@@ -15,12 +14,7 @@ class Category implements IController {
     const service: CategoryService = new CategoryService(req, res);
     const category = await service.store();
 
-    return res.status(201).json({
-      status: true,
-      message: ' category created',
-      errors: {},
-      data: category,
-    });
+    return category;
   };
 
   show = async (req: Request, res: Response): Promise<Response> => {
@@ -34,24 +28,14 @@ class Category implements IController {
     const service: CategoryService = new CategoryService(req, res);
     const category = await service.update();
 
-    return res.status(200).json({
-      status: true,
-      message: 'success updated',
-      errors: {},
-      data: { updated: category },
-    });
+    return category;
   };
 
   delete = async (req: Request, res: Response): Promise<Response> => {
     const service: CategoryService = new CategoryService(req, res);
     const category = await service.delete();
 
-    return res.status(200).json({
-      status: true,
-      message: 'category deleted',
-      errors: {},
-      data: { deleted: category },
-    });
+    return category;
   };
 }
 

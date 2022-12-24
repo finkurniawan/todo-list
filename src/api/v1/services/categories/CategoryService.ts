@@ -1,19 +1,18 @@
 import BaseService from '../BaseService';
-import {AppError,HttpCode} from '../../exceptions/appError'
-import App from "../../../../app";
-import { BaseError } from "../../exceptions/classes/base-error";
-import { APIError } from "../../exceptions/classes/api-error";
+
 const db = require('../../models');
 
 class CategoryService extends BaseService {
   getAll = async () => {
     try {
-      let { limit = 10, offset = 0 } = this.query;
+      let { limit = 10 } = this.query;
+      const { short = 'ASC', offset = 0 } = this.query;
       if (limit >= 100) {
         limit = 100;
       }
 
       const categories = await db.category.findAll({
+        order: [['id', short]],
         where: {
           user_id: this.credential.id,
         },
@@ -33,8 +32,8 @@ class CategoryService extends BaseService {
         message: 'Successfully',
         errors: {},
         data: {
-          categories,
           total,
+          categories,
         },
       });
     } catch (_) {
@@ -59,7 +58,22 @@ class CategoryService extends BaseService {
         },
         { fields: ['name', 'user_id', 'createdAt', 'updatedAt'] }
       );
-      return category;
+
+      if (!category) {
+        return this.res.status(400).json({
+          status: false,
+          message: 'Category not created',
+          errors: {},
+          data: {},
+        });
+      }
+
+      return this.res.status(201).json({
+        status: true,
+        message: ' category created',
+        errors: {},
+        data: category,
+      });
     } catch (_) {
       return this.res.status(400).json({
         status: false,
@@ -122,17 +136,19 @@ class CategoryService extends BaseService {
         }
       );
 
-      return category;
+      return this.res.status(200).json({
+        status: true,
+        message: 'success updated',
+        errors: {},
+        data: { updated: category },
+      });
     } catch (err) {
-      // return this.res.status(400).json({
-      //   status: false,
-      //   message: 'Category not updated',
-      //   errors: {},
-      //   data: {},
-      // });
-      const message = err instanceof APIError ? err.message : `Generic error for user`;
-      this.res.status((<BaseError>err)?.httpCode || 500).send(message);
-      next(err);
+      return this.res.status(400).json({
+        status: false,
+        message: 'Category not updated',
+        errors: {},
+        data: {},
+      });
     }
   };
 
@@ -144,7 +160,12 @@ class CategoryService extends BaseService {
         where: { id, user_id: this.credential.id },
       });
 
-      return category;
+      return this.res.status(200).json({
+        status: true,
+        message: 'category deleted',
+        errors: {},
+        data: { deleted: category },
+      });
     } catch (_) {
       return this.res.status(400).json({
         status: false,

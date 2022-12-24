@@ -5,17 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="615d2ad5-596a-4b39-a853-09e152d9d5a1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/api/v1/exceptions/appError.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/v1/exceptions/errorHandler.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/babel.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/v1/__tests__/accounts/accounts.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/v1/__tests__/task.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/v1/controllers/category/ICategory.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/v1/controllers/home/HomeController.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/v1/controllers/home/IHome.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/v1/routes/home/HomeRoutes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/v1/services/home/HomeService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jest.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/jest.config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/v1/controllers/category/CategoryController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/controllers/category/CategoryController.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/v1/controllers/todos/TodoController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/controllers/todos/TodoController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/v1/exceptions/classes/api-error.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/exceptions/classes/api-error.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/v1/exceptions/classes/base-error.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/exceptions/classes/base-error.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/v1/exceptions/classes/error-handler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/exceptions/classes/error-handler.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/v1/exceptions/classes/logger.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/exceptions/classes/logger.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/v1/exceptions/types/http.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/exceptions/types/http.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/v1/middlewares/validationErrorMiddleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/middlewares/validationErrorMiddleware.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/v1/routes/auth/AuthRoute.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/routes/auth/AuthRoute.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/v1/routes/category/CategoryRoute.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/routes/category/CategoryRoute.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/v1/services/BaseService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/services/BaseService.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/v1/services/accounts/AuthService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/services/accounts/AuthService.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/v1/services/categories/CategoryService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/services/categories/CategoryService.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/v1/services/todos/TodoService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/services/todos/TodoService.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/v1/utils/Authentication.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/utils/Authentication.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/v1/validations/todos/TodoValidator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/validations/todos/TodoValidator.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,6 +48,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="showPreview" value="true" />
+  </component>
   <component name="ProjectId" id="2Iwf9eEfi1oZnWZ8KiyXn87kp2W" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -37,23 +59,84 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/test1/Downloads/express-error-handling-with-graceful-shutdown-master/express-error-handling-with-graceful-shutdown-master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "ts.external.directory.path": "C:\\Users\\test1\\development\\todo-list\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/test1/Downloads/clean-architecture-js-master/clean-architecture-js-master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;C:/Users/test1/development/todo-list/node_modules/jest&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\test1\\development\\todo-list\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="npm.dev:ts">
+    <configuration name="Tasks Module.POST /tasks.should return bad request (400) if using invalid data" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/api/v1/__tests__/task.test.js" />
+      <test-names>
+        <test-name value="Tasks Module" />
+        <test-name value="POST /tasks" />
+        <test-name value="should return bad request (400) if using invalid data" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Tasks Module.POST /tasks.should return success if using valid data" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/api/v1/__tests__/task.test.js" />
+      <test-names>
+        <test-name value="Tasks Module" />
+        <test-name value="POST /tasks" />
+        <test-name value="should return success if using valid data" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="accounts testing.login.username over limit" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/api/v1/__tests__/accounts/accounts.test.js" />
+      <test-names>
+        <test-name value="accounts testing" />
+        <test-name value="login" />
+        <test-name value="username over limit" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="accounts testing.register.register account" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/api/v1/__tests__/accounts/accounts.test.js" />
+      <test-names>
+        <test-name value="accounts testing" />
+        <test-name value="register" />
+        <test-name value="register account" />
+      </test-names>
+      <method v="2" />
+    </configuration>
     <configuration name="dev:ts" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -64,35 +147,20 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="start" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="test" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="npm.dev:ts" />
-        <item itemvalue="npm.start" />
-        <item itemvalue="npm.test" />
+        <item itemvalue="Jest.accounts testing.register.register account" />
+        <item itemvalue="Jest.accounts testing.login.username over limit" />
+        <item itemvalue="Jest.Tasks Module.POST /tasks.should return success if using valid data" />
+        <item itemvalue="Jest.Tasks Module.POST /tasks.should return bad request (400) if using invalid data" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\test1\AppData\Roaming\Subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="615d2ad5-596a-4b39-a853-09e152d9d5a1" name="Changes" comment="" />
@@ -103,7 +171,15 @@
       <workItem from="1671097417048" duration="6687000" />
       <workItem from="1671148834850" duration="13552000" />
       <workItem from="1671242229407" duration="17000" />
-      <workItem from="1671242262266" duration="6493000" />
+      <workItem from="1671242262266" duration="15206000" />
+      <workItem from="1671333124412" duration="3579000" />
+      <workItem from="1671386905897" duration="1012000" />
+      <workItem from="1671387946742" duration="2912000" />
+      <workItem from="1671492499250" duration="16935000" />
+      <workItem from="1671711769612" duration="1318000" />
+      <workItem from="1671742424406" duration="851000" />
+      <workItem from="1671806094269" duration="4387000" />
+      <workItem from="1671879514482" duration="85000" />
     </task>
     <servers />
   </component>

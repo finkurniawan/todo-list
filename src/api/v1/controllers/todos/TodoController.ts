@@ -14,66 +14,29 @@ class Todo implements IController {
   create = async (req: Request, res: Response): Promise<Response> => {
     const service: TodoService = new TodoService(req, res);
     const todo = await service.store();
-    console.log(todo);
-    // if (!todo) {
-    //   return res.status(400)
-    //     .json({
-    //       status: false,
-    //       message: "Todo not created",
-    //       errors: {},
-    //       data: {}
-    //     });
-    // } else {
-    return res.status(201).json({
-      status: true,
-      message: ' todo created',
-      errors: {},
-      data: todo,
-    });
-    // }
+
+    return todo;
   };
 
   show = async (req: Request, res: Response): Promise<Response> => {
     const service: TodoService = new TodoService(req, res);
     const todo = await service.getOne();
 
-    return res.status(200).json({
-      status: true,
-      message: '',
-      errors: {},
-      data: todo,
-    });
+    return todo;
   };
 
   update = async (req: Request, res: Response): Promise<Response> => {
     const service: TodoService = new TodoService(req, res);
     const update = await service.update();
-  if(!update){
-    return res.status(400).json({
-      status: false,
-      message: 'Todo not found',
-      errors: {},
-      data: {},
-    });
-  }
-    return res.status(200).json({
-      status: true,
-      message: 'success updated',
-      errors: {},
-      data: {},
-    });
+
+    return update;
   };
 
   delete = async (req: Request, res: Response): Promise<Response> => {
     const service: TodoService = new TodoService(req, res);
-    await service.delete();
+    const result = await service.delete();
 
-    return res.status(200).json({
-      status: true,
-      message: 'todo deleted',
-      errors: {},
-      data: {},
-    });
+    return result;
   };
 }
 

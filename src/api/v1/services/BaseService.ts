@@ -4,12 +4,15 @@ class BaseService {
   params: Request['params'];
 
   body: Request['body'];
+
   query: Request['query'];
+
   app: Request['app'];
 
   credential: Request['app']['locals']['credential'];
 
   res: Response;
+
   req: Request;
 
   constructor(req: Request, res: Response) {

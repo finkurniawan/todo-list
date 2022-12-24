@@ -60,11 +60,6 @@ class TodoValidator {
         .withMessage('The isCompleted value should be a boolean')
         .notEmpty()
         .withMessage('The isCompleted value should not be empty'),
-      body('category_id')
-        .isString()
-        .withMessage('The category id value should be a string')
-        .notEmpty()
-        .withMessage('The category id value should not be empty'),
     ];
   }
 }
