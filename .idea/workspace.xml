@@ -5,37 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="615d2ad5-596a-4b39-a853-09e152d9d5a1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/babel.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/v1/__tests__/accounts/accounts.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/v1/__tests__/task.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/v1/controllers/category/ICategory.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/v1/controllers/home/HomeController.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/v1/controllers/home/IHome.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/v1/routes/home/HomeRoutes.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/v1/services/home/HomeService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jest.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/jest.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/controllers/category/CategoryController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/controllers/category/CategoryController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/controllers/todos/TodoController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/controllers/todos/TodoController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/exceptions/classes/api-error.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/exceptions/classes/api-error.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/exceptions/classes/base-error.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/exceptions/classes/base-error.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/exceptions/classes/error-handler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/exceptions/classes/error-handler.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/exceptions/classes/logger.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/exceptions/classes/logger.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/exceptions/types/http.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/exceptions/types/http.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/middlewares/validationErrorMiddleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/middlewares/validationErrorMiddleware.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/routes/auth/AuthRoute.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/routes/auth/AuthRoute.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/routes/category/CategoryRoute.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/routes/category/CategoryRoute.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/services/BaseService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/services/BaseService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/services/accounts/AuthService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/services/accounts/AuthService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/services/categories/CategoryService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/services/categories/CategoryService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/services/todos/TodoService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/services/todos/TodoService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/utils/Authentication.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/utils/Authentication.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/validations/todos/TodoValidator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/validations/todos/TodoValidator.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/database.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,22 +49,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="npm.dev:ts">
-    <configuration name="Tasks Module.POST /tasks.should return bad request (400) if using invalid data" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/api/v1/__tests__/task.test.js" />
-      <test-names>
-        <test-name value="Tasks Module" />
-        <test-name value="POST /tasks" />
-        <test-name value="should return bad request (400) if using invalid data" />
-      </test-names>
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Docker.docker-compose.yaml: Compose Deployment">
     <configuration name="Tasks Module.POST /tasks.should return success if using valid data" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -137,6 +95,20 @@
       </test-names>
       <method v="2" />
     </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <configuration name="dev:ts" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -149,11 +121,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.docker-compose.yaml: Compose Deployment" />
         <item itemvalue="npm.dev:ts" />
         <item itemvalue="Jest.accounts testing.register.register account" />
         <item itemvalue="Jest.accounts testing.login.username over limit" />
         <item itemvalue="Jest.Tasks Module.POST /tasks.should return success if using valid data" />
-        <item itemvalue="Jest.Tasks Module.POST /tasks.should return bad request (400) if using invalid data" />
       </list>
     </recent_temporary>
   </component>
@@ -179,7 +151,9 @@
       <workItem from="1671711769612" duration="1318000" />
       <workItem from="1671742424406" duration="851000" />
       <workItem from="1671806094269" duration="4387000" />
-      <workItem from="1671879514482" duration="85000" />
+      <workItem from="1671879514482" duration="1580000" />
+      <workItem from="1672046679810" duration="12595000" />
+      <workItem from="1672144041600" duration="325000" />
     </task>
     <servers />
   </component>
