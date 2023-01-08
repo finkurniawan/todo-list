@@ -4,11 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="615d2ad5-596a-4b39-a853-09e152d9d5a1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
+    <list default="true" id="6cc7f4a0-57a6-4d89-a3f5-ee92fb511e21" name="Changes" comment="bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/database.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/v1/controllers/todos/TodoController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/controllers/todos/TodoController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/v1/exceptions/classes/api-error.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/v1/exceptions/classes/base-error.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/v1/exceptions/classes/error-handler.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/v1/exceptions/classes/logger.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/v1/exceptions/types/http.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/v1/routes/todos/TodoRoutes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/routes/todos/TodoRoutes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/v1/services/todos/TodoService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/services/todos/TodoService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn-error.log" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,16 +26,23 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="66eae35b-a12b-45db-9d9b-366c2c7d1c72" />
+        <option name="url" value="git@github.com:ALFINKA/todo-list.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="showPreview" value="true" />
-  </component>
-  <component name="ProjectId" id="2Iwf9eEfi1oZnWZ8KiyXn87kp2W" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="2JwyM9pzAMpMqzd2MR6bEtBVAbH" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -37,83 +52,43 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/test1/Downloads/clean-architecture-js-master/clean-architecture-js-master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/test1/WebstormProjects/todo-list&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs.jest.jest_package&quot;: &quot;C:/Users/test1/development/todo-list/node_modules/jest&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\test1\\development\\todo-list\\node_modules\\typescript\\lib&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\test1\\WebstormProjects\\todo-list\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Docker.docker-compose.yaml: Compose Deployment">
-    <configuration name="Tasks Module.POST /tasks.should return success if using valid data" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/api/v1/__tests__/task.test.js" />
-      <test-names>
-        <test-name value="Tasks Module" />
-        <test-name value="POST /tasks" />
-        <test-name value="should return success if using valid data" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="accounts testing.login.username over limit" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/api/v1/__tests__/accounts/accounts.test.js" />
-      <test-names>
-        <test-name value="accounts testing" />
-        <test-name value="login" />
-        <test-name value="username over limit" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="accounts testing.register.register account" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/api/v1/__tests__/accounts/accounts.test.js" />
-      <test-names>
-        <test-name value="accounts testing" />
-        <test-name value="register" />
-        <test-name value="register account" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
-      <deployment type="docker-compose.yml">
-        <settings />
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="sourceFilePath" value="docker-compose.yaml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="dev:ts" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="npm.ts">
+    <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
-        <script value="dev:ts" />
+        <script value="test" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="ts" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="ts" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="tsc" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="tsc" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -121,39 +96,26 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.docker-compose.yaml: Compose Deployment" />
-        <item itemvalue="npm.dev:ts" />
-        <item itemvalue="Jest.accounts testing.register.register account" />
-        <item itemvalue="Jest.accounts testing.login.username over limit" />
-        <item itemvalue="Jest.Tasks Module.POST /tasks.should return success if using valid data" />
+        <item itemvalue="npm.ts" />
+        <item itemvalue="npm.tsc" />
+        <item itemvalue="npm.test" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="SvnConfiguration">
-    <configuration>C:\Users\test1\AppData\Roaming\Subversion</configuration>
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="615d2ad5-596a-4b39-a853-09e152d9d5a1" name="Changes" comment="" />
-      <created>1671097415713</created>
+      <changelist id="6cc7f4a0-57a6-4d89-a3f5-ee92fb511e21" name="Changes" comment="" />
+      <created>1673003390348</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1671097415713</updated>
-      <workItem from="1671097417048" duration="6687000" />
-      <workItem from="1671148834850" duration="13552000" />
-      <workItem from="1671242229407" duration="17000" />
-      <workItem from="1671242262266" duration="15206000" />
-      <workItem from="1671333124412" duration="3579000" />
-      <workItem from="1671386905897" duration="1012000" />
-      <workItem from="1671387946742" duration="2912000" />
-      <workItem from="1671492499250" duration="16935000" />
-      <workItem from="1671711769612" duration="1318000" />
-      <workItem from="1671742424406" duration="851000" />
-      <workItem from="1671806094269" duration="4387000" />
-      <workItem from="1671879514482" duration="1580000" />
-      <workItem from="1672046679810" duration="12595000" />
-      <workItem from="1672144041600" duration="325000" />
+      <updated>1673003390348</updated>
+      <workItem from="1673003391997" duration="3224000" />
+      <workItem from="1673075819330" duration="68000" />
+      <workItem from="1673075900190" duration="1966000" />
+      <workItem from="1673077904929" duration="1981000" />
+      <workItem from="1673149558797" duration="8326000" />
+      <workItem from="1673172749936" duration="1081000" />
     </task>
     <servers />
   </component>
@@ -170,5 +132,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug" />
   </component>
 </project>

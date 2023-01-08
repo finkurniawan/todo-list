@@ -5,7 +5,7 @@ WORKDIR /app
 
 COPY . .
 RUN yarn
-RUN yarn sequelize-cli db:migrate
+CMD yarn sequelize-cli db:migrate
 CMD yarn run start
 EXPOSE 3000/tcp
 

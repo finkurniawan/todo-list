@@ -1,3 +1,4 @@
+import { Op } from 'sequelize';
 import BaseService from '../BaseService';
 
 const db = require('../../models');
@@ -101,7 +102,10 @@ class TodoService extends BaseService {
     try {
       const { id } = this.params;
       const todo = await db.todo.findOne({
-        where: { id, user_id: this.credential.id },
+        where: {
+          id,
+          user_id: this.credential.id,
+        },
         attributes: [
           'id',
           'category_id',
@@ -143,7 +147,10 @@ class TodoService extends BaseService {
           is_completed,
         },
         {
-          where: { id, user_id: this.credential.id },
+          where: {
+            id,
+            user_id: this.credential.id,
+          },
         }
       );
       if (Number(todo) === 0) {
@@ -168,7 +175,6 @@ class TodoService extends BaseService {
         errors: {},
         data: {},
       });
-
     }
   };
 
@@ -177,7 +183,10 @@ class TodoService extends BaseService {
       const { id } = this.params;
       const { id: user_id } = this.credential;
       const result = await db.todo.destroy({
-        where: { id, user_id },
+        where: {
+          id,
+          user_id,
+        },
       });
 
       if (Number(result) === 0) {
@@ -204,7 +213,34 @@ class TodoService extends BaseService {
     }
   };
 
-  short: any;
-}
+  search = async () => {
+    const { search: requestSearch } = this.query;
+    const { id: user_id } = this.credential;
 
+    const result = await db.todo.findAll({
+      where: {
+        user_id,
+        [Op.like]: `%${requestSearch}%`,
+      },
+    });
+
+    if (!result) {
+      return this.res.status(400).json({
+        status: false,
+        message: 'Search not found',
+        errors: {},
+        data: {},
+      });
+    }
+
+    return this.res.status(400).json({
+      status: true,
+      message: 'Search success',
+      errors: {},
+      data: result,
+    });
+  };
+  // short: // @ts-ignore
+  //   any;
+}
 export default TodoService;
