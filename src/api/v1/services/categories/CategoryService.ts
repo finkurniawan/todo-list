@@ -1,3 +1,4 @@
+import { Op } from 'sequelize';
 import BaseService from '../BaseService';
 
 const db = require('../../models');
@@ -174,6 +175,36 @@ class CategoryService extends BaseService {
         data: {},
       });
     }
+  };
+
+  search = async () => {
+    const { s: requestSearch } = this.query;
+    const { id: user_id } = this.credential;
+
+    const result = await db.category.findAll({
+      where: {
+        user_id,
+        name: {
+          [Op.like]: `%${requestSearch}%`,
+        },
+      },
+    });
+
+    if (!result) {
+      return this.res.status(400).json({
+        status: false,
+        message: 'Search not found',
+        errors: {},
+        data: {},
+      });
+    }
+
+    return this.res.status(400).json({
+      status: true,
+      message: 'Search success',
+      errors: {},
+      data: result,
+    });
   };
 }
 

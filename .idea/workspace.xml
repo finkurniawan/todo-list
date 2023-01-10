@@ -6,17 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="6cc7f4a0-57a6-4d89-a3f5-ee92fb511e21" name="Changes" comment="bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/v1/controllers/category/CategoryController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/controllers/category/CategoryController.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/v1/controllers/todos/TodoController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/controllers/todos/TodoController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/exceptions/classes/api-error.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/exceptions/classes/base-error.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/exceptions/classes/error-handler.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/exceptions/classes/logger.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/exceptions/types/http.model.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/routes/todos/TodoRoutes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/routes/todos/TodoRoutes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/v1/routes/category/CategoryRoute.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/routes/category/CategoryRoute.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/v1/services/categories/CategoryService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/services/categories/CategoryService.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/v1/services/todos/TodoService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/services/todos/TodoService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn-error.log" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,11 +20,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -63,6 +57,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\test1\WebstormProjects\todo-list" />
+    </key>
+  </component>
   <component name="RunManager" selected="npm.ts">
     <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -115,7 +114,8 @@
       <workItem from="1673075900190" duration="1966000" />
       <workItem from="1673077904929" duration="1981000" />
       <workItem from="1673149558797" duration="8326000" />
-      <workItem from="1673172749936" duration="1081000" />
+      <workItem from="1673172749936" duration="2840000" />
+      <workItem from="1673177062397" duration="3890000" />
     </task>
     <servers />
   </component>

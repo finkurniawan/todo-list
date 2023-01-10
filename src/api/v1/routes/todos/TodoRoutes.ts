@@ -6,7 +6,7 @@ import v from '../../middlewares/validationErrorMiddleware';
 
 class TodoRoutes extends BaseRoutes {
   public routes(): void {
-    this.router.get('/', auth, Todo.search);
+    this.router.get('/search', auth, Todo.search);
     this.router.get('/', auth, Todo.index);
     this.router.get('/:id', auth, Todo.show);
     this.router.post(

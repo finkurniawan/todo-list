@@ -138,13 +138,14 @@ class TodoService extends BaseService {
   update = async () => {
     try {
       const { id } = this.params;
-      const { title, description, is_completed } = this.body;
+      const { title, description, is_completed, deadline } = this.body;
 
       const todo = await db.todo.update(
         {
           title,
           description,
           is_completed,
+          deadline,
         },
         {
           where: {
@@ -214,13 +215,15 @@ class TodoService extends BaseService {
   };
 
   search = async () => {
-    const { search: requestSearch } = this.query;
+    const { s: requestSearch } = this.query;
     const { id: user_id } = this.credential;
 
     const result = await db.todo.findAll({
       where: {
         user_id,
-        [Op.like]: `%${requestSearch}%`,
+        title: {
+          [Op.like]: `%${requestSearch}%`,
+        }
       },
     });
 
@@ -240,6 +243,7 @@ class TodoService extends BaseService {
       data: result,
     });
   };
+
   // short: // @ts-ignore
   //   any;
 }

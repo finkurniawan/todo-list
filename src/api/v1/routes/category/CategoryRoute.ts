@@ -7,6 +7,7 @@ import validationError from '../../middlewares/validationErrorMiddleware';
 
 class CategoryRoutes extends BaseRoutes {
   public routes(): void {
+    this.router.get('/search', auth, Category.search);
     this.router.get('/', auth, Category.index);
     this.router.get('/:id', auth, Category.show);
     this.router.post(

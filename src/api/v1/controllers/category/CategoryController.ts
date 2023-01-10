@@ -5,37 +5,45 @@ import CategoryService from '../../services/categories/CategoryService';
 class Category implements ICategory {
   index = async (req: Request, res: Response): Promise<Response> => {
     const service: CategoryService = new CategoryService(req, res);
-    const categories = await service.getAll();
+    const result = await service.getAll();
 
-    return categories;
+    return result;
   };
 
   create = async (req: Request, res: Response): Promise<Response> => {
     const service: CategoryService = new CategoryService(req, res);
-    const category = await service.store();
+    const result = await service.store();
 
-    return category;
+    return result;
   };
 
   show = async (req: Request, res: Response): Promise<Response> => {
     const service: CategoryService = new CategoryService(req, res);
-    const category = await service.getAllFilter();
+    const result = await service.getAllFilter();
 
-    return category;
+    return result;
   };
 
   update = async (req: Request, res: Response): Promise<Response> => {
     const service: CategoryService = new CategoryService(req, res);
-    const category = await service.update();
+    const result = await service.update();
 
-    return category;
+    return result;
   };
 
   delete = async (req: Request, res: Response): Promise<Response> => {
     const service: CategoryService = new CategoryService(req, res);
-    const category = await service.delete();
+    const result = await service.delete();
 
-    return category;
+    return result;
+  };
+
+
+  search = async (req: Request, res: Response): Promise<Response> => {
+    const service: CategoryService = new CategoryService(req, res);
+    const result = await service.search();
+
+    return result;
   };
 }
 
