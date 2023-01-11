@@ -7,25 +7,23 @@ class CategoryService extends BaseService {
   getAll = async () => {
     try {
       let { limit = 10 } = this.query;
-      const { short = 'ASC', offset = 0 } = this.query;
+      const { short = 'ASC', offset = 0, s: search } = this.query;
+
       if (limit >= 100) {
         limit = 100;
       }
 
-      const categories = await db.category.findAll({
+      const { count, rows } = await db.category.findAndCountAll({
         order: [['id', short]],
         where: {
           user_id: this.credential.id,
+          name: {
+            [Op.like]: `%${search}%`,
+          },
         },
         limit,
         offset,
         attributes: ['id', 'name', 'createdAt', 'updatedAt', 'icon'],
-      });
-
-      const total = await db.category.count({
-        where: {
-          user_id: this.credential.id,
-        },
       });
 
       return this.res.status(200).json({
@@ -33,14 +31,14 @@ class CategoryService extends BaseService {
         message: 'Successfully',
         errors: {},
         data: {
-          total,
-          categories,
+          count,
+          rows,
         },
       });
     } catch (_) {
       return this.res.status(400).json({
         status: false,
-        message: 'Category not found',
+        message: 'failed get all todo',
         errors: {},
         data: {},
       });
@@ -175,36 +173,6 @@ class CategoryService extends BaseService {
         data: {},
       });
     }
-  };
-
-  search = async () => {
-    const { s: requestSearch } = this.query;
-    const { id: user_id } = this.credential;
-
-    const result = await db.category.findAll({
-      where: {
-        user_id,
-        name: {
-          [Op.like]: `%${requestSearch}%`,
-        },
-      },
-    });
-
-    if (!result) {
-      return this.res.status(400).json({
-        status: false,
-        message: 'Search not found',
-        errors: {},
-        data: {},
-      });
-    }
-
-    return this.res.status(400).json({
-      status: true,
-      message: 'Search success',
-      errors: {},
-      data: result,
-    });
   };
 }
 

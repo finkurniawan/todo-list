@@ -7,15 +7,20 @@ class TodoService extends BaseService {
   getAll = async () => {
     try {
       let { limit = 10 } = this.query;
-      const { offset = 0, short = 'ASC' } = this.query;
+      const { offset = 0, order_by = 'ASC', s: search } = this.query;
 
       if (limit >= 100) {
         limit = 100;
       }
 
-      const todos = await db.todo.findAll({
-        order: [['id', short]],
-        where: { user_id: this.credential.id },
+      const { count, rows } = await db.todo.findAndCountAll({
+        order: [['id', order_by]],
+        where: {
+          user_id: this.credential.id,
+          title: {
+            [Op.like]: `%${search}%`,
+          },
+        },
         include: [{ model: db.category }],
         attributes: [
           'id',
@@ -31,12 +36,6 @@ class TodoService extends BaseService {
         limit,
       });
 
-      const total = await db.todo.count({
-        where: {
-          user_id: this.credential.id,
-        },
-      });
-
       return this.res.status(200).json({
         status: true,
         message: 'Get all todo successfully',
@@ -44,16 +43,14 @@ class TodoService extends BaseService {
         data: {
           offset,
           limit,
-          total,
-          todos,
+          count,
+          rows,
         },
       });
     } catch (_) {
       return this.res.status(400).json({
-        status: false,
-        message: 'Todo not found',
-        errors: {},
-        data: {},
+        status: true,
+        message: 'failed get all todo',
       });
     }
   };
@@ -213,38 +210,5 @@ class TodoService extends BaseService {
       });
     }
   };
-
-  search = async () => {
-    const { s: requestSearch } = this.query;
-    const { id: user_id } = this.credential;
-
-    const result = await db.todo.findAll({
-      where: {
-        user_id,
-        title: {
-          [Op.like]: `%${requestSearch}%`,
-        }
-      },
-    });
-
-    if (!result) {
-      return this.res.status(400).json({
-        status: false,
-        message: 'Search not found',
-        errors: {},
-        data: {},
-      });
-    }
-
-    return this.res.status(400).json({
-      status: true,
-      message: 'Search success',
-      errors: {},
-      data: result,
-    });
-  };
-
-  // short: // @ts-ignore
-  //   any;
 }
 export default TodoService;

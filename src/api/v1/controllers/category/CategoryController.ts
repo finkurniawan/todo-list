@@ -38,13 +38,6 @@ class Category implements ICategory {
     return result;
   };
 
-
-  search = async (req: Request, res: Response): Promise<Response> => {
-    const service: CategoryService = new CategoryService(req, res);
-    const result = await service.search();
-
-    return result;
-  };
 }
 
 export default new Category();

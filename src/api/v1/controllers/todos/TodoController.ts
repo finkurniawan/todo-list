@@ -39,15 +39,6 @@ class Todo implements IController {
     return result;
   };
 
-  search = async (req: Request, res: Response): Promise<Response> => {
-    const service: TodoService = new TodoService(req, res);
-    const result = await service.search();
-
-    return result;
-  };
-
-
-
 
 }
 
