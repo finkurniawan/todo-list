@@ -7,14 +7,14 @@ class CategoryService extends BaseService {
   getAll = async () => {
     try {
       let { limit = 10 } = this.query;
-      const { short = 'ASC', offset = 0, s: search } = this.query;
+      const { order_by = 'ASC', offset = 0, s: search } = this.query;
 
       if (limit >= 100) {
         limit = 100;
       }
 
       const { count, rows } = await db.category.findAndCountAll({
-        order: [['id', short]],
+        order: [['id', order_by]],
         where: {
           user_id: this.credential.id,
           name: {
