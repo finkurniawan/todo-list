@@ -28,6 +28,12 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
+      indexes: [
+        {
+          unique: false,
+          fields: ['name'],
+        },
+      ],
     });
   },
   async down(queryInterface, Sequelize) {

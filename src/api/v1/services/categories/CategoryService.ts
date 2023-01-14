@@ -7,7 +7,11 @@ class CategoryService extends BaseService {
   getAll = async () => {
     try {
       let { limit = 10 } = this.query;
-      const { order_by = 'ASC', offset = 0, s: search } = this.query;
+      const {
+        order_by = 'ASC',
+        offset = 0,
+        s: search = '',
+      } = this.query;
 
       if (limit >= 100) {
         limit = 100;
@@ -18,7 +22,7 @@ class CategoryService extends BaseService {
         where: {
           user_id: this.credential.id,
           name: {
-            [Op.like]: `%${search}%`,
+            [Op.iLike]: `%${search}%`,
           },
         },
         limit,
@@ -87,29 +91,45 @@ class CategoryService extends BaseService {
     try {
       const { id: category_id } = this.params;
       const { id: user_id } = this.credential;
-      let { limit = 10, offset = 0 } = this.query;
+      let {
+        limit = 10,
+        offset = 0,
+        s: search = '',
+        is_completed = null,
+      } = this.query;
       if (limit >= 100) {
         limit = 100;
       }
-      const category = await db.todo.findAll({
-        where: { category_id, user_id },
-        offset,
-        limit,
-      });
 
-      const total = await db.todo.count({
+      const { count, rows } = await db.todo.findAndCountAll({
         where: {
           category_id,
-          user_id: this.credential.id,
+          user_id,
+          [Op.or]: {
+            title: {
+              [Op.iLike]: `%${search}%`,
+            },
+            description: {
+              [Op.iLike]: `%${search}%`,
+            },
+          },
+          is_completed: {
+            [Op.or]:
+              is_completed === null
+                ? [true, false]
+                : [is_completed, is_completed],
+          },
         },
+        offset,
+        limit,
       });
 
       return this.res.status(200).json({
         status: true,
         message: 'Get all todo by category successfully',
         errors: {},
-        category,
-        total,
+        count,
+        rows,
       });
     } catch (_) {
       return this.res.status(400).json({

@@ -41,6 +41,12 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
+      indexes: [
+        {
+          unique: false,
+          fields: ['is_complated', 'title'],
+        },
+      ],
     });
   },
   async down(queryInterface, Sequelize) {

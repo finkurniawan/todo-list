@@ -7,7 +7,12 @@ class TodoService extends BaseService {
   getAll = async () => {
     try {
       let { limit = 10 } = this.query;
-      const { offset = 0, order_by = 'ASC', s: search } = this.query;
+      const {
+        offset = 0,
+        order_by = 'ASC',
+        s: search = '',
+        is_completed = null,
+      } = this.query;
 
       if (limit >= 100) {
         limit = 100;
@@ -17,8 +22,19 @@ class TodoService extends BaseService {
         order: [['id', order_by]],
         where: {
           user_id: this.credential.id,
-          title: {
-            [Op.like]: `%${search}%`,
+          [Op.or]: {
+            title: {
+              [Op.iLike]: `%${search}%`,
+            },
+            description: {
+              [Op.iLike]: `%${search}%`,
+            },
+          },
+          is_completed: {
+            [Op.or]:
+              is_completed === null
+                ? [true, false]
+                : [is_completed, is_completed],
           },
         },
         include: [{ model: db.category }],
