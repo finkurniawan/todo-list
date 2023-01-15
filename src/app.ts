@@ -23,7 +23,7 @@ class App {
 
   protected plugins(): void {
     this.APP.use(bodyParser.json());
-    this.APP.use(morgan('dev'));
+    // this.APP.use(morgan('dev'));
     this.APP.use(compression());
     this.APP.use(helmet());
     this.APP.use(cors());

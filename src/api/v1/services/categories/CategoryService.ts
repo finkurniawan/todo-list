@@ -7,11 +7,7 @@ class CategoryService extends BaseService {
   getAll = async () => {
     try {
       let { limit = 10 } = this.query;
-      const {
-        order_by = 'ASC',
-        offset = 0,
-        s: search = '',
-      } = this.query;
+      const { order_by = 'ASC', offset = 0, s: search = '' } = this.query;
 
       if (limit >= 100) {
         limit = 100;
@@ -91,12 +87,12 @@ class CategoryService extends BaseService {
     try {
       const { id: category_id } = this.params;
       const { id: user_id } = this.credential;
-      let {
-        limit = 10,
+      let { limit = 10 } = this.query;
+      const {
         offset = 0,
         s: search = '',
         is_completed = null,
-      } = this.query;
+      }: any = this.query;
       if (limit >= 100) {
         limit = 100;
       }
@@ -128,8 +124,10 @@ class CategoryService extends BaseService {
         status: true,
         message: 'Get all todo by category successfully',
         errors: {},
-        count,
-        rows,
+        data: {
+          count,
+          rows,
+        },
       });
     } catch (_) {
       return this.res.status(400).json({

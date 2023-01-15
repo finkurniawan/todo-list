@@ -3,7 +3,7 @@ import App from './app';
 
 dotenv();
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.APP_PORT || 8000;
 const { APP } = new App();
 
 APP.listen(PORT, () => {
