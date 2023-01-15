@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6cc7f4a0-57a6-4d89-a3f5-ee92fb511e21" name="Changes" comment="bug">
-      <change afterPath="$PROJECT_DIR$/src/api/v1/repository/home/homeRepository.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/__tests__/accounts/accounts.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/__tests__/accounts/accounts.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/services/categories/CategoryService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/services/categories/CategoryService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/services/todos/TodoService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/services/todos/TodoService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/db/migrations/20220808153149-create-todo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/migrations/20220808153149-create-todo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/db/migrations/20220813051125-create-category.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/migrations/20220813051125-create-category.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/v1/repository/home/homeRepository.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/v1/services/accounts/AuthService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/services/accounts/AuthService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/database.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,10 +32,16 @@
       </UrlAndAccount>
     </option>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/node_modules/@types/bcrypt/index.d.ts" root0="SKIP_INSPECTION" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2JwyM9pzAMpMqzd2MR6bEtBVAbH" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -152,6 +156,7 @@
       <workItem from="1673595213147" duration="3747000" />
       <workItem from="1673641515496" duration="5167000" />
       <workItem from="1673655944780" duration="7030000" />
+      <workItem from="1673750240704" duration="1877000" />
     </task>
     <servers />
   </component>

@@ -2,7 +2,7 @@ import { Response } from 'express';
 import Authentication from '../../utils/Authentication';
 import BaseService from '../BaseService';
 
-const db = require('../../models');
+const db: any = require('../../models');
 
 class AuthService extends BaseService {
   async register(): Promise<Response> {
@@ -48,20 +48,6 @@ class AuthService extends BaseService {
       return this.res.status(400).json({
         status: false,
         message: 'User not found',
-        errors: {},
-        data: {},
-      });
-    }
-
-    const compare = await Authentication.passwordCompare(
-      password,
-      user.password
-    );
-
-    if (!compare) {
-      this.res.status(400).json({
-        status: false,
-        message: "Password doesn't match",
         errors: {},
         data: {},
       });
