@@ -22,3 +22,4 @@ services:
       - "8002:8002"
     environment:
       - "DB_HOST_DATABASE=postgresql-backend"
+      - "APP_PORT=8002"

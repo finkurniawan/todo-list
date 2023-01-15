@@ -8,16 +8,16 @@ class TodoValidator {
         .withMessage('The title value should be a string')
         .notEmpty()
         .withMessage('The title value should not be empty')
-        .isLength({ max: 50, min: 1 })
-        .withMessage('The title value should be between 1 and 50 characters'),
+        .isLength({ max: 100, min: 1 })
+        .withMessage('The title value should be between 1 and 100 characters'),
       body('description')
         .isString()
         .withMessage('The description value should be a string')
         .notEmpty()
         .withMessage('The description value should not be empty')
-        .isLength({ max: 50, min: 1 })
+        .isLength({ max: 500, min: 1 })
         .withMessage(
-          'The description value should be between 1 and 50 characters'
+          'The description value should be between 1 and 500 characters'
         ),
       body('deadline')
         .isString()
@@ -32,7 +32,6 @@ class TodoValidator {
       body('category_id')
         .isInt()
         .withMessage('The category id value should be a string')
-        .notEmpty()
         .withMessage('The category id value should not be empty'),
     ];
   }
@@ -44,16 +43,16 @@ class TodoValidator {
         .withMessage('The title value should be a string')
         .notEmpty()
         .withMessage('The title value should not be empty')
-        .isLength({ max: 50, min: 1 })
-        .withMessage('The title value should be between 1 and 50 characters'),
+        .isLength({ max: 100, min: 1 })
+        .withMessage('The title value should be between 1 and 100 characters'),
       body('description')
         .isString()
         .withMessage('The description value should be a string')
         .notEmpty()
         .withMessage('The description value should not be empty')
-        .isLength({ max: 50, min: 1 })
+        .isLength({ max: 500, min: 1 })
         .withMessage(
-          'The description value should be between 1 and 50 characters'
+          'The description value should be between 1 and 500 characters'
         ),
       body('is_completed')
         .isBoolean()

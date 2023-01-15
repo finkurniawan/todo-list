@@ -17,8 +17,8 @@ class AccountValidator {
         .withMessage('The email value should be a valid email')
         .notEmpty()
         .withMessage('The email value should not be empty')
-        .isLength({ max: 30, min: 1 })
-        .withMessage('The email value should be between 1 and 30 characters'),
+        .isLength({ max: 100, min: 1 })
+        .withMessage('The email value should be between 1 and 100 characters'),
       body('password')
         .isString()
         .withMessage('The password value should be a string')

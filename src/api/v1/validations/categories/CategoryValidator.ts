@@ -8,7 +8,7 @@ class CategoryValidator {
         .withMessage('This field must be a string')
         .notEmpty()
         .withMessage('This field is required')
-        .isLength({ min: 3 })
+        .isLength({ min: 3, max: 100 })
         .withMessage('This field must be at least 3 characters long'),
     ];
   }

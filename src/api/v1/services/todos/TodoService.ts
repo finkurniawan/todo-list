@@ -73,8 +73,13 @@ class TodoService extends BaseService {
 
   store = async () => {
     try {
-      const { title, description, is_completed, deadline, category_id } =
-        this.body;
+      const {
+        title,
+        description,
+        is_completed,
+        deadline,
+        category_id = null,
+      } = this.body;
       const isOverTime: any = deadline <= Date.now();
       const todo = await db.todo.create({
         user_id: this.credential.id,

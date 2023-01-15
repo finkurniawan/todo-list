@@ -1,7 +1,7 @@
 import { config as dotenv } from 'dotenv';
 import express, { Application, Response } from 'express';
 import bodyParser from 'body-parser';
-import morgan from 'morgan';
+// import morgan from 'morgan';
 import compression from 'compression';
 import helmet from 'helmet';
 import cors from 'cors';
