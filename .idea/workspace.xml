@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6cc7f4a0-57a6-4d89-a3f5-ee92fb511e21" name="Changes" comment="bug">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/models/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/services/todos/TodoService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/services/todos/TodoService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/validations/auth/authValidator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/validations/auth/authValidator.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/validations/categories/CategoryValidator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/validations/categories/CategoryValidator.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/validations/todos/TodoValidator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/validations/todos/TodoValidator.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/db/migrations/20220808152713-create-user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/migrations/20220808152713-create-user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/db/migrations/20220808153149-create-todo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/migrations/20220808153149-create-todo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/db/migrations/20220813051125-create-category.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/migrations/20220813051125-create-category.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,9 +29,6 @@
       </UrlAndAccount>
     </option>
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/node_modules/@types/bcrypt/index.d.ts" root0="SKIP_INSPECTION" />
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -54,23 +40,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/test1/WebstormProjects/todo-list&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs.jest.jest_package&quot;: &quot;C:/Users/test1/WebstormProjects/todo-list/node_modules/jest&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\test1\\WebstormProjects\\todo-list\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "//wsl$/Ubuntu/home/ubuntu/.deno/bin/deno",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs.jest.jest_package": "C:/Users/test1/WebstormProjects/todo-list/node_modules/jest",
+    "nodejs_package_manager_path": "yarn",
+    "settings.editor.selected.configurable": "com.intellij.deno.DenoConfigurable",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2022.3.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\test1\WebstormProjects\todo-list" />
@@ -81,7 +69,10 @@
       <command value="yarn run dev:ts" />
     </option>
   </component>
-  <component name="RunManager" selected="Jest.accounts testing.register.structure token">
+  <component name="RunManager" selected="Deno.Deno: index.ts">
+    <configuration name="Deno: index.ts" type="DenoConfigurationType" temporary="true" nameIsGenerated="true" inputPath="$PROJECT_DIR$/src/index.ts" programParameters="run" workingDirectory="$PROJECT_DIR$/src">
+      <method v="2" />
+    </configuration>
     <configuration name="accounts testing.register" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -131,23 +122,13 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="tsc" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="tsc" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Deno.Deno: index.ts" />
         <item itemvalue="npm.dev:ts" />
         <item itemvalue="Jest.accounts testing.register.structure token" />
         <item itemvalue="Jest.accounts testing.register" />
         <item itemvalue="npm.ts" />
-        <item itemvalue="npm.tsc" />
       </list>
     </recent_temporary>
   </component>
@@ -170,6 +151,7 @@
       <workItem from="1673641515496" duration="5167000" />
       <workItem from="1673655944780" duration="7030000" />
       <workItem from="1673750240704" duration="4484000" />
+      <workItem from="1674029304792" duration="5134000" />
     </task>
     <servers />
   </component>

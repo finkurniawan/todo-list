@@ -54,7 +54,7 @@ module.exports = {
             fields: [
               'category_id',
               'title',
-              'descripton',
+              'description',
               'user_id',
               'is_completed',
               'id',
