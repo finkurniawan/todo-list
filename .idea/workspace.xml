@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6cc7f4a0-57a6-4d89-a3f5-ee92fb511e21" name="Changes" comment="bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/db/migrations/20220808153149-create-todo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/migrations/20220808153149-create-todo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/v1/services/categories/CategoryService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/services/categories/CategoryService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/v1/services/home/HomeService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/services/home/HomeService.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +50,7 @@
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "",
+    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.standard": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs.jest.jest_package": "C:/Users/test1/WebstormProjects/todo-list/node_modules/jest",
@@ -151,7 +152,8 @@
       <workItem from="1673641515496" duration="5167000" />
       <workItem from="1673655944780" duration="7030000" />
       <workItem from="1673750240704" duration="4484000" />
-      <workItem from="1674029304792" duration="5134000" />
+      <workItem from="1674029304792" duration="5980000" />
+      <workItem from="1674118468327" duration="2044000" />
     </task>
     <servers />
   </component>

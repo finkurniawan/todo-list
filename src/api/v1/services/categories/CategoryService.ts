@@ -120,12 +120,30 @@ class CategoryService extends BaseService {
         limit,
       });
 
+      const countInProgress = db.todo.count({
+        where: {
+          category_id,
+          user_id,
+          is_completed: false
+        }
+      })
+
+      const countDone = db.todo.count({
+        where: {
+          category_id,
+          user_id,
+          is_completed: true
+        }
+      })
+
       return this.res.status(200).json({
         status: true,
         message: 'Get all todo by category successfully',
         errors: {},
         data: {
           count,
+          countDone,
+          countInProgress,
           rows,
         },
       });
