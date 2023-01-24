@@ -6,15 +6,20 @@ const db = require('../../models');
 class CategoryService extends BaseService {
   getAll = async () => {
     try {
-      let { limit = 10 } = this.query;
-      const { order_by = 'ASC', offset = 0, s: search = '' } = this.query;
+      let { limit = 10, order_by = 'DESC' } = this.query;
+      const { offset = 0, s: search = '' } = this.query;
 
       if (limit >= 100) {
         limit = 100;
       }
+      if(order_by === "DESC"){
+        order_by = "ASC";
+      }else{
+        order_by = "DESC";
+      }
 
       const { count, rows } = await db.category.findAndCountAll({
-        order: [['id', order_by]],
+        order: [['updated_at', order_by.toUpperCase()]],
         where: {
           user_id: this.credential.id,
           name: {
@@ -92,7 +97,10 @@ class CategoryService extends BaseService {
         offset = 0,
         s: search = '',
         is_completed = null,
+        order_by = "ASC"
       }: any = this.query;
+
+
       if (limit >= 100) {
         limit = 100;
       }
@@ -101,6 +109,7 @@ class CategoryService extends BaseService {
         where: {
           category_id,
           user_id,
+          order: [["deadline",order_by.toUpperCase()]],
           [Op.or]: {
             title: {
               [Op.iLike]: `%${search}%`,
@@ -120,7 +129,7 @@ class CategoryService extends BaseService {
         limit,
       });
 
-      const countInProgress = db.todo.count({
+      const totalInProgress = db.todo.count({
         where: {
           category_id,
           user_id,
@@ -128,7 +137,7 @@ class CategoryService extends BaseService {
         }
       })
 
-      const countDone = db.todo.count({
+      const totalDone = db.todo.count({
         where: {
           category_id,
           user_id,
@@ -141,9 +150,9 @@ class CategoryService extends BaseService {
         message: 'Get all todo by category successfully',
         errors: {},
         data: {
-          count,
-          countDone,
-          countInProgress,
+          totalTodos: count,
+          totalDone,
+          totalInProgress,
           rows,
         },
       });
