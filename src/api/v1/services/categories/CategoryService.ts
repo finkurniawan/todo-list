@@ -19,7 +19,7 @@ class CategoryService extends BaseService {
       }
 
       const { count, rows } = await db.category.findAndCountAll({
-        order: [['updated_at', order_by.toUpperCase()]],
+        order: [['updated_at', (order_by.toString().toUpperCase())]],
         where: {
           user_id: this.credential.id,
           name: {
@@ -109,7 +109,7 @@ class CategoryService extends BaseService {
         where: {
           category_id,
           user_id,
-          order: [["deadline",order_by.toUpperCase()]],
+          order: [["deadline",(order_by.toString().toUpperCase())]],
           [Op.or]: {
             title: {
               [Op.iLike]: `%${search}%`,

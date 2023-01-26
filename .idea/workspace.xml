@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6cc7f4a0-57a6-4d89-a3f5-ee92fb511e21" name="Changes" comment="bug">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/services/categories/CategoryService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/services/categories/CategoryService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/v1/services/todos/TodoService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/v1/services/todos/TodoService.ts" afterDir="false" />
-    </list>
+    <list default="true" id="6cc7f4a0-57a6-4d89-a3f5-ee92fb511e21" name="Changes" comment="bug" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,6 +28,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="ProjectId" id="2JwyM9pzAMpMqzd2MR6bEtBVAbH" />
   <component name="ProjectLevelVcsManager">
@@ -156,7 +155,8 @@
       <workItem from="1674118468327" duration="3060000" />
       <workItem from="1674168098795" duration="1858000" />
       <workItem from="1674461012374" duration="3404000" />
-      <workItem from="1674532959519" duration="4503000" />
+      <workItem from="1674532959519" duration="5191000" />
+      <workItem from="1674620573889" duration="2432000" />
     </task>
     <servers />
   </component>

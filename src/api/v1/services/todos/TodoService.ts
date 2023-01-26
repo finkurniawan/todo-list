@@ -19,7 +19,7 @@ class TodoService extends BaseService {
       }
 
       const { count, rows } = await db.todo.findAndCountAll({
-        order: [['deadline', order_by.toUpperCase()]],
+        order: [['deadline', (order_by.toString().toUpperCase())]],
         where: {
           user_id: this.credential.id,
           [Op.or]: {
