@@ -12,14 +12,14 @@ class CategoryService extends BaseService {
       if (limit >= 100) {
         limit = 100;
       }
-      if(order_by === "DESC"){
-        order_by = "ASC";
-      }else{
-        order_by = "DESC";
+      if (order_by === 'DESC') {
+        order_by = 'ASC';
+      } else {
+        order_by = 'DESC';
       }
 
       const { count, rows } = await db.category.findAndCountAll({
-        order: [['updated_at', (order_by.toString().toUpperCase())]],
+        order: [['updated_at', order_by.toString().toUpperCase()]],
         where: {
           user_id: this.credential.id,
           name: {
@@ -97,19 +97,18 @@ class CategoryService extends BaseService {
         offset = 0,
         s: search = '',
         is_completed = null,
-        order_by = "ASC"
+        order_by = 'ASC',
       }: any = this.query;
-
 
       if (limit >= 100) {
         limit = 100;
       }
 
-      const { count, rows } = await db.todo.findAndCountAll({
+      const getAllTodoByCategory = db.todo.findAndCountAll({
+        order: [['deadline', order_by.toString().toUpperCase()]],
         where: {
           category_id,
           user_id,
-          order: [["deadline",(order_by.toString().toUpperCase())]],
           [Op.or]: {
             title: {
               [Op.iLike]: `%${search}%`,
@@ -129,21 +128,63 @@ class CategoryService extends BaseService {
         limit,
       });
 
-      const totalInProgress = db.todo.count({
+      const totalInProgressOnNotSearch = db.todo.count({
         where: {
           category_id,
           user_id,
-          is_completed: false
-        }
-      })
+          is_completed: false,
+        },
+      });
 
-      const totalDone = db.todo.count({
+      const totalDoneOnNotSearch = db.todo.count({
         where: {
           category_id,
           user_id,
-          is_completed: true
-        }
-      })
+          is_completed: true,
+        },
+      });
+
+      const totalDoneOnSearch = db.todo.count({
+        where: {
+          category_id,
+          user_id,
+          [Op.or]: {
+            title: {
+              [Op.iLike]: `%${search}%`,
+            },
+            description: {
+              [Op.iLike]: `%${search}%`,
+            },
+          },
+          is_completed: true,
+        },
+        offset,
+        limit,
+      });
+
+      const totalInProgressOnSearch = db.todo.count({
+        where: {
+          category_id,
+          user_id,
+          [Op.or]: {
+            title: {
+              [Op.iLike]: `%${search}%`,
+            },
+            description: {
+              [Op.iLike]: `%${search}%`,
+            },
+          },
+          is_completed: false,
+        },
+        offset,
+        limit,
+      });
+
+      const [{ count, rows }, totalInProgress, totalDone] = await Promise.all([
+        getAllTodoByCategory,
+        !search ? totalInProgressOnNotSearch : totalInProgressOnSearch,
+        !search ? totalDoneOnNotSearch : totalDoneOnSearch,
+      ]);
 
       return this.res.status(200).json({
         status: true,

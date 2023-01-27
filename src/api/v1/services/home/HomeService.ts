@@ -5,30 +5,38 @@ const db = require('../../models');
 class HomeService extends BaseService {
   getAll = async () => {
     try {
-      const totalCategories  = await db.category.count({
+      const totalCategoriesTask = db.category.count({
         where: {
           user_id: this.credential.id,
         },
       });
 
-      const totalTodos = await db.todo.count({
+      const totalTodosTask = db.todo.count({
         where: {
           user_id: this.credential.id,
         },
       });
-      const   totalDone  = await db.todo.count({
+      const totalDoneTask = db.todo.count({
         where: {
           is_completed: true,
           user_id: this.credential.id,
         },
       });
 
-      const  totalInProgress  = await db.todo.count({
+      const totalInProgressTask = db.todo.count({
         where: {
           is_completed: false,
           user_id: this.credential.id,
         },
       });
+
+      const [totalCategories, totalTodos, totalDone, totalInProgress] =
+        await Promise.all([
+          totalCategoriesTask,
+          totalTodosTask,
+          totalDoneTask,
+          totalInProgressTask,
+        ]);
 
       return this.res.status(200).json({
         status: true,
@@ -38,7 +46,7 @@ class HomeService extends BaseService {
           totalDone,
           totalInProgress,
           totalTodos,
-          totalCategories
+          totalCategories,
         },
       });
     } catch (_) {

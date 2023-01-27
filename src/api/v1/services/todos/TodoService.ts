@@ -19,7 +19,7 @@ class TodoService extends BaseService {
       }
 
       const { count, rows } = await db.todo.findAndCountAll({
-        order: [['deadline', (order_by.toString().toUpperCase())]],
+        order: [['deadline', order_by.toString().toUpperCase()]],
         where: {
           user_id: this.credential.id,
           [Op.or]: {
@@ -52,6 +52,40 @@ class TodoService extends BaseService {
         limit,
       });
 
+      const totalDone = await db.todo.count({
+        where: {
+          user_id: this.credential.id,
+          [Op.or]: {
+            title: {
+              [Op.iLike]: `%${search}%`,
+            },
+            description: {
+              [Op.iLike]: `%${search}%`,
+            },
+          },
+          is_completed: true,
+        },
+        offset,
+        limit,
+      });
+
+      const totalInProgress = await db.todo.count({
+        where: {
+          user_id: this.credential.id,
+          [Op.or]: {
+            title: {
+              [Op.iLike]: `%${search}%`,
+            },
+            description: {
+              [Op.iLike]: `%${search}%`,
+            },
+          },
+          is_completed: false,
+        },
+        offset,
+        limit,
+      });
+
       return this.res.status(200).json({
         status: true,
         message: 'Get all todo successfully',
@@ -60,6 +94,8 @@ class TodoService extends BaseService {
           offset,
           limit,
           count,
+          totalDone,
+          totalInProgress,
           rows,
         },
       });

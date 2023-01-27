@@ -23,7 +23,6 @@ class TodoRoutes extends BaseRoutes {
       Todo.update
     );
     this.router.delete('/:id', auth, Todo.delete);
-
   }
 }
 
