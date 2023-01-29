@@ -12,10 +12,10 @@ if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config,{
 
     pool: {
-      max: 100,
-      min: 50,
+      max: 115,
+      min: 70,
       acquire: 30000,
-      idle: 10000
+      idle: 30000
     }
   });
 } else {
@@ -26,10 +26,10 @@ if (config.use_env_variable) {
     config,
     {
       pool: {
-        max: 5,
-        min: 0,
+        max: 115,
+        min: 70,
         acquire: 30000,
-        idle: 10000
+        idle: 30000
       }
     },
 

@@ -26,6 +26,7 @@
     "prefer-arrow-callback": "off",
     "comma-dangle": "off",
     "camelcase": "off",
+    "class-methods-use-this": "off",
     "import/extensions": [
       "error",
       {

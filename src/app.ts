@@ -1,7 +1,6 @@
 import { config as dotenv } from 'dotenv';
 import express, { Application, Response } from 'express';
 import bodyParser from 'body-parser';
-// import morgan from 'morgan';
 import compression from 'compression';
 import helmet from 'helmet';
 import cors from 'cors';
@@ -21,12 +20,25 @@ class App {
     dotenv();
   }
 
+  // eslint-disable-next-line class-methods-use-this
+  protected corsOptionsDelegate(req: any, callback: any) {
+    const allowList: any = process.env.CORS_DOMAIN_ALLOW || [null];
+    let corsOptions: { origin: boolean };
+
+    if (allowList.indexOf(req.get('Origin')) !== -1) {
+      corsOptions = { origin: true };
+    } else {
+      corsOptions = { origin: true };
+    }
+
+    callback(null, corsOptions);
+  }
+
   protected plugins(): void {
-    this.APP.use(bodyParser.json());
-    // this.APP.use(morgan('dev'));
-    this.APP.use(compression());
+    this.APP.use(cors(this.corsOptionsDelegate));
     this.APP.use(helmet());
-    this.APP.use(cors());
+    this.APP.use(bodyParser.json());
+    this.APP.use(compression());
   }
 
   protected routes(): void {
@@ -38,7 +50,7 @@ class App {
     this.APP.use('*', (_, res: Response) =>
       res.status(404).json({
         status: false,
-        message: 'Page not found',
+        message: 'Request Not found',
         errors: [],
         data: null,
       })

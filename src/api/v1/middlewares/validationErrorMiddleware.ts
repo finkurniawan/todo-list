@@ -8,9 +8,9 @@ class ValidationError {
     if (!errors.isEmpty()) {
       return res.status(400).json({
         status: false,
-        data: null,
         message: 'Validation Error',
         errors: errors.array(),
+        data: {},
       });
     }
     return next();

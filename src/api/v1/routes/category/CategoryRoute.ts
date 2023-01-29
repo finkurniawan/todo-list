@@ -1,4 +1,3 @@
-// import {Request,Response,NextFunction} from "express";
 import Category from '../../controllers/category/CategoryController';
 import BaseRoutes from '../BaseRouter';
 import auth from '../../middlewares/auth/AuthMiddleware';

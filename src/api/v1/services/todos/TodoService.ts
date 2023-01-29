@@ -18,7 +18,7 @@ class TodoService extends BaseService {
         limit = 100;
       }
 
-      const { count, rows } = await db.todo.findAndCountAll({
+      const getAlltodos = db.todo.findAndCountAll({
         order: [['deadline', order_by.toString().toUpperCase()]],
         where: {
           user_id: this.credential.id,
@@ -52,7 +52,7 @@ class TodoService extends BaseService {
         limit,
       });
 
-      const totalDone = await db.todo.count({
+      const totalDoneTask = db.todo.count({
         where: {
           user_id: this.credential.id,
           [Op.or]: {
@@ -69,7 +69,7 @@ class TodoService extends BaseService {
         limit,
       });
 
-      const totalInProgress = await db.todo.count({
+      const totalInProgressTask = db.todo.count({
         where: {
           user_id: this.credential.id,
           [Op.or]: {
@@ -86,9 +86,15 @@ class TodoService extends BaseService {
         limit,
       });
 
+      const [{ count, rows }, totalInProgress, totalDone] = await Promise.all([
+        getAlltodos,
+        totalInProgressTask,
+        totalDoneTask,
+      ]);
+
       return this.res.status(200).json({
         status: true,
-        message: 'Get all todo successfully',
+        message: 'Get all TODOs successfully',
         errors: {},
         data: {
           offset,
@@ -102,7 +108,7 @@ class TodoService extends BaseService {
     } catch (_) {
       return this.res.status(400).json({
         status: true,
-        message: 'failed get all todo',
+        message: 'Get all TODOs failed',
       });
     }
   };
@@ -130,7 +136,7 @@ class TodoService extends BaseService {
       if (!todo) {
         return this.res.status(400).json({
           status: false,
-          message: 'Todo not created',
+          message: 'Todo not added',
           errors: {},
           data: {},
         });
@@ -138,14 +144,14 @@ class TodoService extends BaseService {
 
       return this.res.status(201).json({
         status: true,
-        message: ' todo created',
+        message: 'Todo added',
         errors: {},
         data: todo,
       });
     } catch (_) {
       return this.res.status(400).json({
         status: false,
-        message: 'Todo not created',
+        message: 'Todo not added',
         errors: {},
         data: {},
       });
@@ -175,14 +181,14 @@ class TodoService extends BaseService {
 
       return this.res.status(200).json({
         status: true,
-        message: '',
+        message: 'Get one todo successfully',
         errors: {},
         data: todo,
       });
     } catch (_) {
       return this.res.status(400).json({
         status: false,
-        message: 'Todo not found',
+        message: 'Get one todo failed',
         errors: {},
         data: {},
       });
@@ -211,7 +217,7 @@ class TodoService extends BaseService {
       if (Number(todo) === 0) {
         return this.res.status(400).json({
           status: false,
-          message: 'Todo not found',
+          message: 'Todo not updated',
           errors: {},
           data: {},
         });
@@ -219,14 +225,14 @@ class TodoService extends BaseService {
 
       return this.res.status(200).json({
         status: true,
-        message: 'success updated',
+        message: 'updated successfully',
         errors: {},
         data: {},
       });
     } catch (_) {
       return this.res.status(400).json({
         status: false,
-        message: 'Todo not found',
+        message: 'Todo not updated',
         errors: {},
         data: {},
       });
@@ -247,7 +253,7 @@ class TodoService extends BaseService {
       if (Number(result) === 0) {
         return this.res.status(400).json({
           status: false,
-          message: 'Todo not found',
+          message: 'Failed to delete todo',
           errors: {},
           data: {},
         });
@@ -261,7 +267,7 @@ class TodoService extends BaseService {
     } catch (_) {
       return this.res.status(400).json({
         status: false,
-        message: 'Todo not found',
+        message: 'Failed to delete todo',
         errors: {},
         data: {},
       });

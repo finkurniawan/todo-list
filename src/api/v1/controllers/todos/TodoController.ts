@@ -10,7 +10,6 @@ class Todo implements IController {
     return todos;
   };
 
-  // eslint-disable-next-line class-methods-use-this
   create = async (req: Request, res: Response): Promise<Response> => {
     const service: TodoService = new TodoService(req, res);
     const todo = await service.store();
@@ -38,9 +37,6 @@ class Todo implements IController {
 
     return result;
   };
-
-
 }
-
 
 export default new Todo();

@@ -12,6 +12,7 @@ class CategoryService extends BaseService {
       if (limit >= 100) {
         limit = 100;
       }
+
       if (order_by === 'DESC') {
         order_by = 'ASC';
       } else {
@@ -33,7 +34,7 @@ class CategoryService extends BaseService {
 
       return this.res.status(200).json({
         status: true,
-        message: 'Successfully',
+        message: 'Get all successfully',
         errors: {},
         data: {
           count,
@@ -43,7 +44,7 @@ class CategoryService extends BaseService {
     } catch (_) {
       return this.res.status(400).json({
         status: false,
-        message: 'failed get all todo',
+        message: 'Failed on getting all categories',
         errors: {},
         data: {},
       });
@@ -63,25 +64,16 @@ class CategoryService extends BaseService {
         { fields: ['name', 'user_id', 'createdAt', 'updatedAt'] }
       );
 
-      if (!category) {
-        return this.res.status(400).json({
-          status: false,
-          message: 'Category not created',
-          errors: {},
-          data: {},
-        });
-      }
-
       return this.res.status(201).json({
         status: true,
-        message: ' category created',
+        message: 'Category added',
         errors: {},
         data: category,
       });
     } catch (_) {
       return this.res.status(400).json({
         status: false,
-        message: 'Category not created',
+        message: 'Category not added',
         errors: {},
         data: {},
       });
@@ -188,7 +180,7 @@ class CategoryService extends BaseService {
 
       return this.res.status(200).json({
         status: true,
-        message: 'Get all todo by category successfully',
+        message: 'Get all TODOs by category successfully',
         errors: {},
         data: {
           totalTodos: count,
@@ -200,7 +192,7 @@ class CategoryService extends BaseService {
     } catch (_) {
       return this.res.status(400).json({
         status: false,
-        message: 'Category not found',
+        message: 'Get all TODOs by category failed',
         errors: {},
         data: {},
       });
@@ -223,14 +215,14 @@ class CategoryService extends BaseService {
 
       return this.res.status(200).json({
         status: true,
-        message: 'success updated',
+        message: 'Category name updated successfully',
         errors: {},
         data: { updated: category },
       });
     } catch (err) {
       return this.res.status(400).json({
         status: false,
-        message: 'Category not updated',
+        message: 'Category name not updated',
         errors: {},
         data: {},
       });
@@ -247,7 +239,7 @@ class CategoryService extends BaseService {
 
       return this.res.status(200).json({
         status: true,
-        message: 'category deleted',
+        message: 'Category deleted successfully',
         errors: {},
         data: { deleted: category },
       });

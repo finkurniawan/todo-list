@@ -34,7 +34,7 @@ class AuthService extends BaseService {
     if (!createdUser) {
       return this.res.status(400).json({
         status: false,
-        message: 'User not created',
+        message: 'Create account failed',
         errors: {},
         data: {},
       });

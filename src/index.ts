@@ -1,11 +1,11 @@
 import { config as dotenv } from 'dotenv';
-import App from './app';
 import cluster from 'cluster';
 import { cpus } from 'os';
 import process from 'process';
+import App from './app';
 
 dotenv();
-console.log(process.env.APP_PORT)
+console.log(process.env.APP_PORT);
 const PORT = process.env.APP_PORT || 8000;
 const { APP } = new App();
 const numCPUs = cpus().length;

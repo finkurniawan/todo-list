@@ -16,6 +16,7 @@ class HomeService extends BaseService {
           user_id: this.credential.id,
         },
       });
+
       const totalDoneTask = db.todo.count({
         where: {
           is_completed: true,
@@ -40,7 +41,7 @@ class HomeService extends BaseService {
 
       return this.res.status(200).json({
         status: true,
-        message: 'Get Home successfully',
+        message: 'Get home successfully',
         errors: {},
         data: {
           totalDone,
@@ -52,7 +53,7 @@ class HomeService extends BaseService {
     } catch (_) {
       return this.res.status(400).json({
         status: false,
-        message: 'Home not found',
+        message: 'Get home failed',
         errors: {},
         data: {},
       });
