@@ -1,13 +1,31 @@
+import Profile from '../../controllers/auth/ProfileController';
 import AuthController from '../../controllers/auth/AuthController';
 import BaseRoutes from '../BaseRouter';
-import validate from '../../middlewares/auth/validator';
-import auth from '../../middlewares/auth/AuthMiddleware';
-
+import AccountValidator from '../../validations/auth/authValidator';
+import ValidationError from '../../middlewares/validationErrorMiddleware';
+import Auth from '../../middlewares/auth/AuthMiddleware';
 class AuthRoutes extends BaseRoutes {
   public routes(): void {
-    this.router.post('/register', validate, AuthController.register);
-    this.router.post('/login', validate, AuthController.login);
-    this.router.get('/profile', auth, AuthController.profile);
+    this.router.post(
+      '/register',
+      AccountValidator.checkCreateAccount(),
+      ValidationError.handleValidationError,
+      AuthController.register
+    );
+    this.router.post(
+      '/login',
+      AccountValidator.checkLoginAccount(),
+      ValidationError.handleValidationError,
+      AuthController.login
+    );
+    this.router.get('/profile', Auth, Profile.index);
+    this.router.put(
+      '/profile',
+      Auth,
+      AccountValidator.checkUpdateProfile(),
+      ValidationError.handleValidationError,
+      Profile.update
+    );
   }
 }
 

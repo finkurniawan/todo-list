@@ -1,4 +1,3 @@
-'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('todos', {
@@ -14,12 +13,24 @@ module.exports = {
         allowNull: false,
       },
       title: {
+        allowNull: false,
         type: Sequelize.TEXT,
       },
       description: {
         type: Sequelize.TEXT,
       },
       is_completed: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN,
+      },
+      deadline: {
+        type: Sequelize.DATE,
+      },
+      category_id: {
+        default: '1',
+        type: Sequelize.INTEGER,
+      },
+      over_time: {
         type: Sequelize.BOOLEAN,
       },
       created_at: {

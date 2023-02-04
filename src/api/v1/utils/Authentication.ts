@@ -13,14 +13,12 @@ class Authentication {
     return result;
   };
 
-  public static generateToken = (
-    id: number,
-    username: string,
-    password: string
-  ): string => {
+  public static generateToken = (id: number): string => {
     const secretKey: string | any = process.env.JWT_SECRET_KEY;
 
-    const token: string = jwt.sign({ id, username, password }, secretKey);
+    const token: string = jwt.sign({ id }, secretKey, {
+      expiresIn: '24h',
+    });
 
     return token;
   };

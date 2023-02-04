@@ -1,77 +1,170 @@
-import { Request } from 'express';
+import BaseService from '../BaseService';
 
 const db = require('../../models');
 
-class TodoService {
-  credential: {
-    id: number;
-  };
-
-  body: Request['body'];
-
-  params: Request['params'];
-
-  constructor(req: Request) {
-    this.credential = req.app.locals.credential;
-
-    this.body = req.body;
-    this.params = req.params;
-  }
-
+class TodoService extends BaseService {
   getAll = async () => {
-    const todos = db.todo.findAll({
-      where: { user_id: this.credential.id },
-    });
-    return todos;
+    try {
+      let { limit = 10, offset = 0 } = this.query;
+      if (limit >= 100) {
+        limit = 100;
+      }
+
+      const todos = await db.todo.findAll({
+        where: { user_id: this.credential.id },
+        include: [{ model: db.category }],
+        attributes: [
+          'id',
+          'title',
+          'category_id',
+          'description',
+          'is_completed',
+          'deadline',
+          'createdAt',
+          'updatedAt',
+        ],
+        offset,
+        limit,
+      });
+
+      const total = await db.todo.count({
+        where: {
+          user_id: this.credential.id,
+        },
+      });
+
+      return this.res.status(200).json({
+        status: true,
+        message: 'Get all todo successfully',
+        errors: {},
+        data: {
+          todos,
+          total,
+        },
+      });
+    } catch (_) {
+      return this.res.status(400).json({
+        status: false,
+        message: 'Todo not found',
+        errors: {},
+        data: {},
+      });
+    }
   };
 
   store = async () => {
-    const { title, description, isCompleted } = this.body;
-
-    const todo = await db.todo.create({
-      user_id: this.credential.id,
-      title,
-      description,
-      is_completed: isCompleted,
-    });
-    return todo;
+    try {
+      const { title, description, is_completed, deadline, category_id } =
+        this.body;
+      const isOverTime = deadline <= new Date();
+      const todo = await db.todo.create({
+        user_id: this.credential.id,
+        title,
+        description,
+        is_completed,
+        deadline,
+        category_id,
+        over_time: isOverTime,
+      });
+      return todo;
+    } catch (_) {
+      return this.res.status(400).json({
+        status: false,
+        message: 'Todo not created',
+        errors: {},
+        data: {},
+      });
+    }
   };
 
   getOne = async () => {
-    const { id } = this.params;
-    console.log(this.credential.id);
-    const todo = await db.todo.findOne({
-      where: { id, user_id: this.credential.id },
-    });
+    try {
+      const { id } = this.params;
+      const todo = await db.todo.findOne({
+        where: { id, user_id: this.credential.id },
+        attributes: [
+          'id',
+          'category_id',
+          'title',
+          'description',
+          'is_completed',
+          'deadline',
+          'over_time',
+          'createdAt',
+          'updatedAt',
+        ],
+      });
 
-    return todo;
+      return todo;
+    } catch (_) {
+      return this.res.status(400).json({
+        status: false,
+        message: 'Todo not found',
+        errors: {},
+        data: {},
+      });
+    }
   };
 
   update = async () => {
-    const { id } = this.params;
-    const { title, description, isCompleted } = this.body;
-    const todo = await db.todo.update(
-      {
-        title,
-        description,
-        is_completed: isCompleted,
-      },
-      {
-        where: { id, user_id: this.credential.id },
+    try {
+      const { id } = this.params;
+      const { title, description, is_completed } = this.body;
+      const todo = await db.todo.update(
+        {
+          title,
+          description,
+          is_completed,
+        },
+        {
+          where: { id, user_id: this.credential.id },
+        }
+      );
+      if (Number(todo) === 0) {
+        return this.res.status(400).json({
+          status: false,
+          message: 'Todo not found',
+          errors: {},
+          data: {},
+        });
       }
-    );
-
-    return todo;
+      return todo;
+    } catch (_) {
+      return this.res.status(400).json({
+        status: false,
+        message: 'Todo not found',
+        errors: {},
+        data: {},
+      });
+    }
   };
 
   delete = async () => {
-    const { id } = this.params;
+    try {
+      const { id } = this.params;
+      const { id: user_id } = this.credential;
+      const todo = await db.todo.destroy({
+        where: { id, user_id },
+      });
 
-    const todo = await db.todo.destroy({
-      where: { id, user_id: this.credential.id },
-    });
+      if (Number(todo) === 0) {
+        return this.res.status(400).json({
+          status: false,
+          message: 'Todo not found',
+          errors: {},
+          data: {},
+        });
+      }
 
-    return todo;
+      return todo;
+    } catch (_) {
+      return this.res.status(400).json({
+        status: false,
+        message: 'Todo not found',
+        errors: {},
+        data: {},
+      });
+    }
   };
 }
 

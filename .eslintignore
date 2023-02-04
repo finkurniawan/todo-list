@@ -1,2 +1,6 @@
 settings.json
 tsconfig.json
+package.json
+db/migrations/
+db/seeders
+models/
