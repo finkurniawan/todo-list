@@ -25,10 +25,10 @@ class App {
     const allowList: any = process.env.CORS_DOMAIN_ALLOW || [null];
     let corsOptions: { origin: boolean };
 
-    if (allowList.indexOf(req.get('Origin')) !== -1) {
+    if (allowList.indexOf(req.hostname) !== -1) {
       corsOptions = { origin: true };
     } else {
-      corsOptions = { origin: true };
+      corsOptions = { origin: false };
     }
 
     callback(null, corsOptions);
