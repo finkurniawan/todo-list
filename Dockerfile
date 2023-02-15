@@ -26,7 +26,7 @@ ENV CORS_DOMAIN_ALLOW=["http://localhost:3000"]
 COPY . .
 RUN yarn
 RUN yarn run tsc
-CMD yarn run sequelize-cli db:migrate
+RUN yarn run sequelize-cli db:migrate
 CMD yarn run start
 EXPOSE 8002/tcp
 
