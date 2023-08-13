@@ -9,7 +9,7 @@
     "singleQuote": true
   },
   "engines": {
-    "node": "16.16.0"
+    "node": ">=16.16.0"
   },
   "scripts": {
     "tsc": "rm -rf build/ && tsc",
